@@ -90,12 +90,12 @@ img {
 
 .calendar {
   margin: 0 auto;
-  border-spacing: 0.5rem;
+  border-spacing: 1rem;
 }
 
 .calendar td {
-  width: 2rem;
-  height: 2rem;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .holiday {
@@ -107,7 +107,7 @@ img {
 }
 
 .today {
-  border-radius: 2rem;
+  border-radius: 1.5rem;
   background-color: var(--black);
   color: var(--white);
 }
