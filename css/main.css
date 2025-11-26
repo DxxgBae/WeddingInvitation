@@ -1,135 +1,160 @@
 @font-face {
-  font-family: "Freesentation-4Regular";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-4Regular.woff2")
-    format("woff2");
-  font-weight: 400;
-  font-style: normal;
+    font-family: "Freesentation-4Regular";
+    src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-4Regular.woff2")
+        format("woff2");
+    font-weight: 400;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: "Freesentation-9Black";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2")
-    format("woff2");
-  font-weight: 900;
-  font-style: normal;
+    font-family: "Freesentation-9Black";
+    src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2")
+        format("woff2");
+    font-weight: 900;
+    font-style: normal;
 }
 
 :root {
-  --black: #111;
-  --white: #fcfcfc;
-  --gray: #ddd;
-  --gray2: #aaa;
-  --color: #111;
+    --black: #111;
+    --white: #fcfcfc;
+    --gray: #ddd;
+    --gray2: #aaa;
+    --color: #111;
 }
 
 * {
-  box-sizing: border-box;
-  word-break: keep-all;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    word-break: keep-all;
+    margin: 0;
+    padding: 0;
 }
 
 html {
-  font-size: 16px;
-  scroll-behavior: smooth;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  background-color: whitesmoke;
+    font-size: 16px;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    background-color: whitesmoke;
 }
 
 html::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 body {
-  font-family: "Freesentation-4Regular", sans-serif;
-  margin: 0 auto;
-  max-width: 480px;
-  height: 100%;
-  background-color: var(--white);
-  color: var(--black);
-  text-align: center;
+    font-family: "Freesentation-4Regular", sans-serif;
+    margin: 0 auto;
+    max-width: 480px;
+    height: 100%;
+    background-color: var(--white);
+    color: var(--black);
+    text-align: center;
 }
 
 h6 {
-  font-weight: 400;
-  margin-bottom: 1rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
 }
 
 img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .main {
-  width: 100%;
-  height: 100vh;
-  height: 100dvh;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
 }
 
 .container {
-  position: relative;
-  padding: 2rem;
-}
-
-.full {
-  padding: 0;
+    position: relative;
+    padding: 2rem;
 }
 
 .gallery {
-  padding: 0.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+    padding: 2rem 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.gallery a {
+    position: relative;
+    flex: 0 0 calc((100% - 1rem) / 3);
+    padding-bottom: calc((100% - 1rem) / 3);
+    height: 0;
+    overflow: hidden;
+}
+
+.gallery a:nth-child(n + 10) {
+    display: none;
+}
+
+.gallery.expanded a:nth-child(n + 10) {
+    display: flex;
 }
 
 .gallery img {
-  width: calc((100% - 1rem) / 3);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.galleryMoreBtn {
+    cursor: pointer;
+    padding: 1rem;
+    width: 100%;
+    background-color: whitesmoke;
+    font-size: small;
 }
 
 .calendar {
-  margin: 0 auto;
-  border-spacing: 1rem;
+    margin: 0 auto;
+    border-spacing: 1rem;
 }
 
 .calendar td {
-  width: 1.5rem;
-  height: 1.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
 }
 
 .holiday {
-  color: #cd5c5c;
+    color: #cd5c5c;
 }
 
 .saturday {
-  color: #191970;
+    color: #191970;
 }
 
 .today {
-  border-radius: 1.5rem;
-  background-color: var(--black);
-  color: var(--white);
+    border-radius: 1.5rem;
+    background-color: var(--black);
+    color: var(--white);
 }
 
 .ending {
-  position: relative;
-  width: 100%;
+    position: relative;
+    width: 100%;
 }
 
 .endingText {
-  position: absolute;
-  z-index: 1;
-  top: calc(2rem + 1rem);
-  left: 0;
-  width: 100%;
+    position: absolute;
+    z-index: 1;
+    top: calc(2rem + 1rem);
+    left: 0;
+    width: 100%;
 }
 
 .footer {
-  font-size: x-small;
-  color: var(--gray);
+    font-size: x-small;
+    color: var(--gray);
 }
 
 .footer .b {
-  color: var(--gray2);
+    color: var(--gray2);
 }
