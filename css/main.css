@@ -7,8 +7,8 @@
 }
 
 @font-face {
-    font-family: "Freesentation-9Black";
-    src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2")
+    font-family: "Freesentation-7Bold";
+    src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-7Bold.woff2")
         format("woff2");
     font-weight: 900;
     font-style: normal;
@@ -51,9 +51,37 @@ body {
     text-align: center;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
 h6 {
-    font-weight: 400;
-    margin-bottom: 1rem;
+    font-family: "Freesentation-7Bold", sans-serif;
+}
+
+h1 {
+    font-size: xx-large;
+}
+
+h2 {
+    font-size: x-large;
+}
+
+h3 {
+    font-size: larger;
+}
+
+h4 {
+    font-size: medium;
+}
+
+h5 {
+    font-size: small;
+}
+
+h6 {
+    font-size: x-small;
 }
 
 img {
@@ -63,9 +91,13 @@ img {
 }
 
 .main {
+    padding-bottom: 4rem;
     width: 100%;
     height: 100vh;
     height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
 }
 
 .container {
@@ -111,6 +143,26 @@ img {
     width: 100%;
     background-color: whitesmoke;
     font-size: small;
+}
+
+.ddayContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.ddayItem {
+    width: 4rem;
+}
+
+.ddayTag {
+    font-size: x-small;
+    color: var(--gray2);
+}
+
+.ddayNum {
+    font-size: x-large;
 }
 
 .calendar {
