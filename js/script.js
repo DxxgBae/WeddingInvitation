@@ -94,4 +94,18 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(function () {
         map.trigger("resize");
     }, 1000);
+
+    //계좌버튼
+    const accountBtns = document.querySelectorAll("div.accountBtn");
+    accountBtns.forEach((button) => {
+        button.addEventListener("click", function () {
+            if (this.className === "accountBtn") {
+                this.className = "accountBtn clicked";
+                this.textContent = this.textContent.replace("▼", "▲");
+            } else {
+                this.className = "accountBtn";
+                this.textContent = this.textContent.replace("▲", "▼");
+            }
+        });
+    });
 });

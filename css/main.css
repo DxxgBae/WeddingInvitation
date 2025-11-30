@@ -101,6 +101,12 @@ img {
     border: 1px solid var(--gray);
     border-radius: 8px;
     font-size: small;
+    text-decoration: none;
+    color: var(--black);
+}
+
+.btn::after {
+    text-decoration: none;
 }
 
 .intro {
@@ -123,7 +129,6 @@ img {
     width: 100%;
     color: var(--white);
     text-align: left;
-    font-size: 6rem;
     font-family: "Freesentation-9Black", sans-serif;
     line-height: 0.8;
 }
@@ -192,6 +197,97 @@ img {
     border-radius: 1.5rem;
     background-color: var(--black);
     color: var(--white);
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.notice {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 1px solid var(--gray);
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+}
+
+.notice label {
+    cursor: pointer;
+    padding: 0.75rem 0;
+    width: calc(100% / 3);
+    font-size: small;
+    border-bottom: 1px solid var(--gray);
+    background-color: whitesmoke;
+}
+
+.notice label ~ label {
+    border-left: 1px solid var(--gray);
+}
+
+.notice input:checked + label {
+    border-bottom: 0px;
+    background-color: white;
+}
+
+.notice1text,
+.notice2text,
+.notice3text {
+    display: none;
+    padding: 0.75rem;
+    width: 100%;
+    background-color: white;
+}
+
+.notice1:checked ~ .notice1text,
+.notice2:checked ~ .notice2text,
+.notice3:checked ~ .notice3text {
+    display: block;
+}
+
+.account {
+    border: 1px solid var(--gray);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.accountBtn {
+    cursor: pointer;
+    padding: 0.75rem 0;
+    width: 100%;
+    font-size: small;
+    background-color: white;
+    border-bottom: 1px solid transparent;
+    transition: border 400ms;
+}
+
+.accountBtn.clicked {
+    border-bottom: 1px solid var(--gray);
+}
+
+.accounts {
+    height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    background-color: white;
+    transition: height 400ms;
+}
+
+.accountBtn.clicked + .accounts {
+    height: 6rem;
+}
+
+.accounts table {
+    margin: 0 auto;
+    width: fit-content;
+    border-collapse: collapse;
+}
+
+.accounts td {
+    padding: 0 0.5rem;
+    height: 1.5rem;
 }
 
 .ending {
