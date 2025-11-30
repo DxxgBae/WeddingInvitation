@@ -7,8 +7,8 @@
 }
 
 @font-face {
-    font-family: "Freesentation-7Bold";
-    src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-7Bold.woff2")
+    font-family: "Freesentation-9Black";
+    src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2")
         format("woff2");
     font-weight: 900;
     font-style: normal;
@@ -51,62 +51,81 @@ body {
     text-align: center;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: "Freesentation-7Bold", sans-serif;
-}
-
-h1 {
-    font-size: xx-large;
-}
-
-h2 {
-    font-size: x-large;
-}
-
-h3 {
-    font-size: larger;
-}
-
-h4 {
-    font-size: medium;
-}
-
-h5 {
-    font-size: small;
-}
-
-h6 {
-    font-size: x-small;
-}
-
 img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
-.main {
-    padding-bottom: 4rem;
-    width: 100%;
-    height: 100vh;
-    height: 100dvh;
-    display: flex;
-    flex-direction: column;
-    gap: 4rem;
+.large {
+    font-size: larger;
+}
+
+.small {
+    font-size: small;
+}
+
+.xsmall {
+    font-size: x-small;
+}
+
+.gray {
+    color: var(--gray);
+}
+
+.gray2 {
+    color: var(--gray2);
 }
 
 .container {
     position: relative;
-    padding: 2rem;
+    padding: 2rem 1rem;
+}
+
+.btn {
+    cursor: pointer;
+    margin-top: 1rem;
+    padding: 1rem 0;
+    width: 100%;
+    background-color: white;
+    border: 1px solid var(--gray);
+    border-radius: 8px;
+    font-size: small;
+}
+
+.intro {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+}
+
+.intro img {
+    object-position: top;
+}
+
+.introText {
+    position: absolute;
+    z-index: 1;
+    bottom: 2rem;
+    left: 0;
+    padding: 0 2rem;
+    width: 100%;
+    color: var(--white);
+    text-align: left;
+    font-size: 6rem;
+    font-family: "Freesentation-9Black", sans-serif;
+    line-height: 0.8;
+}
+
+.callContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
 }
 
 .gallery {
-    padding: 2rem 0.5rem;
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
@@ -137,14 +156,6 @@ img {
     object-fit: cover;
 }
 
-.galleryMoreBtn {
-    cursor: pointer;
-    padding: 1rem;
-    width: 100%;
-    background-color: whitesmoke;
-    font-size: small;
-}
-
 .ddayContainer {
     display: flex;
     flex-direction: row;
@@ -153,16 +164,7 @@ img {
 }
 
 .ddayItem {
-    width: 4rem;
-}
-
-.ddayTag {
-    font-size: x-small;
-    color: var(--gray2);
-}
-
-.ddayNum {
-    font-size: x-large;
+    width: 3rem;
 }
 
 .calendar {
@@ -197,16 +199,12 @@ img {
 .endingText {
     position: absolute;
     z-index: 1;
-    top: calc(2rem + 1rem);
+    top: 3rem;
     left: 0;
     width: 100%;
+    color: var(--white);
 }
 
-.footer {
-    font-size: x-small;
-    color: var(--gray);
-}
-
-.footer .b {
-    color: var(--gray2);
+#map {
+    width: 100%;
 }
