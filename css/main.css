@@ -58,6 +58,10 @@ img {
     display: block;
 }
 
+.marginBtm {
+    margin-bottom: 1rem;
+}
+
 .large {
     font-size: larger;
 }
@@ -83,10 +87,15 @@ img {
     padding: 2rem 1rem;
 }
 
+.rowContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
 .btn {
     cursor: pointer;
-    margin-top: 1rem;
-    padding: 1rem 0;
+    padding: 0.75rem 0;
     width: 100%;
     background-color: white;
     border: 1px solid var(--gray);
@@ -117,12 +126,6 @@ img {
     font-size: 6rem;
     font-family: "Freesentation-9Black", sans-serif;
     line-height: 0.8;
-}
-
-.callContainer {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
 }
 
 .gallery {
@@ -206,5 +209,8 @@ img {
 }
 
 #map {
+    margin: 1rem 0;
     width: 100%;
+    max-height: 300px;
+    aspect-ratio: 3 / 2;
 }

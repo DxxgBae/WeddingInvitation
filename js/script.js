@@ -65,23 +65,33 @@ document.addEventListener("DOMContentLoaded", function () {
     updateCountdown();
 
     //지도
-    function initMap() {
-        var mapDiv = document.getElementById("map");
-        var center = new naver.maps.LatLng(37.3595704, 127.105399);
-        var mapOptions = {
-            center: center,
-            zoom: 16,
-            minZoom: 10,
-            zoomControl: true,
-            zoomControlOptions: {
-                position: naver.maps.Position.TOP_RIGHT,
-            },
-        };
-        var map = new naver.maps.Map(mapDiv, mapOptions);
-        var marker = new naver.maps.Marker({
-            position: center,
-            map: map,
-        });
-    }
-    window.onload = initMap;
+    var mapDiv = document.getElementById("map");
+    var center = new naver.maps.LatLng(37.52014, 127.05547);
+    var mapOptions = {
+        center: center,
+        zoom: 17,
+        minZoom: 13,
+        maxZoom: 18,
+        scaleControl: false,
+        mapDataControl: false,
+        mapTypeControl: false,
+        zoomControl: false,
+    };
+    var map = new naver.maps.Map(mapDiv, mapOptions);
+    var marker = new naver.maps.Marker({
+        position: center,
+        map: map,
+    });
+    naver.maps.Event.addListener(map, "center_changed", function (center) {
+        var newCenter = map.getCenter();
+        var newLat = newCenter.lat();
+        var newLng = newCenter.lng();
+
+        console.log("지도가 이동되었습니다. 새로운 중심 좌표:");
+        console.log("위도 (Latitude): " + newLat);
+        console.log("경도 (Longitude): " + newLng);
+    });
+    setTimeout(function () {
+        map.trigger("resize");
+    }, 1000);
 });
