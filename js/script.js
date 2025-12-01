@@ -88,6 +88,36 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(function () {
         map.trigger("resize");
     }, 1000);
+
+    const guestbookUrl =
+        "https://docs.google.com/spreadsheets/d/1BsjMFCJLE8gI2KQS4nfcOxfofJ7vzepg7UMfD0MzM88/gviz/tq?tqx=out:json&gid=0";
+    fetch(guestbookUrl)
+        .then((response) => response.text())
+        .then((text) => {
+            const json = JSON.parse(text.slice(47, -2));
+            const keys = json.table.cols.map((c) => c.label);
+            const data = json.table.rows
+                .map((r) =>
+                    Object.fromEntries(
+                        keys.map((key, i) => [key, r.c[i]?.v ?? ""])
+                    )
+                )
+                .reverse();
+            const wrapper = document.querySelector(
+                ".swiper-guestbook .swiper-wrapper"
+            );
+            data.forEach((item) => {
+                loadGuestbook(wrapper, item);
+            });
+            new Swiper(".swiper-guestbook", {
+                direction: "vertical",
+                loop: false,
+                effect: "slide",
+                slidesPerView: "auto",
+                spaceBetween: 8,
+            });
+        })
+        .catch((error) => console.error("Error:", error));
 });
 
 function clicked(element) {
@@ -111,4 +141,22 @@ function copyAccount(element) {
         .catch((err) => {
             alert("복사에 실패했습니다.");
         });
+}
+
+function loadGuestbook(wrapper, item) {
+    if (item.show) {
+        const slide = document.createElement("div");
+        slide.classList.add("swiper-slide");
+        slide.classList.add("guestbookSlide");
+        const x = document.createElement("div");
+        x.textContent = "x";
+        slide.appendChild(x);
+        const id = document.createElement("div");
+        id.textContent = item.id;
+        slide.appendChild(id);
+        const text = document.createElement("div");
+        text.textContent = item.text;
+        slide.appendChild(text);
+        wrapper.appendChild(slide);
+    }
 }

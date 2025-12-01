@@ -405,6 +405,16 @@ input[type="radio"] {
     padding: 0 0.5rem;
 }
 
+.swiper-guestbook {
+    overflow: hidden;
+}
+
+.guestbookSlide {
+    border: 1px solid var(--gray);
+    border-radius: 8px;
+    background-color: white;
+}
+
 .upload {
     display: flex;
     flex-direction: row;
