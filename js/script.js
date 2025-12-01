@@ -1,5 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     // 갤러리
+    window.fslightbox_config = {
+        zoom_buttons: false,
+    };
     const gallery = document.querySelector(".gallery");
     const showMoreButton = document.querySelector(".galleryShowMore");
     const items = gallery.querySelectorAll("a");
@@ -85,33 +88,27 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(function () {
         map.trigger("resize");
     }, 1000);
-
-    //계좌복사
-    const accountCopys = document.querySelectorAll(".accountCopy");
-    accountCopys.forEach((button) => {
-        button.addEventListener("click", function () {
-            const tds = this.querySelectorAll("td");
-            const textContents = [];
-            Array.from(tds)
-                .slice(1, -1)
-                .forEach((td) => {
-                    textContents.push(td.innerText.trim());
-                });
-            const textToCopy = textContents.join(" ");
-            navigator.clipboard
-                .writeText(textToCopy)
-                .then(() => {
-                    alert(`내용이 복사되었습니다.`);
-                })
-                .catch((err) => {
-                    alert("복사에 실패했습니다.");
-                });
-        });
-    });
 });
 
 function clicked(element) {
     const isClicked = element.classList.toggle("clicked");
     if (isClicked) element.textContent = element.textContent.replace("", "");
     else element.textContent = element.textContent.replace("", "");
+}
+
+function callPhone(element) {
+    const phoneNumber = element.getAttribute("data-phone");
+    if (phoneNumber) window.location.href = `tel:${phoneNumber}`;
+    else console.error("전화번호 정보가 없습니다.", element);
+}
+
+function copyAccount(element) {
+    navigator.clipboard
+        .writeText(element.getAttribute("data-account"))
+        .then(() => {
+            alert(`내용이 복사되었습니다.`);
+        })
+        .catch((err) => {
+            alert("복사에 실패했습니다.");
+        });
 }
