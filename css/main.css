@@ -29,7 +29,14 @@
     padding: 0;
 }
 
+*::-webkit-scrollbar {
+    display: none;
+}
+
 html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
     font-size: 16px;
     scroll-behavior: smooth;
     -ms-overflow-style: none;
@@ -37,17 +44,20 @@ html {
     background-color: whitesmoke;
 }
 
-html::-webkit-scrollbar {
-    display: none;
-}
-
 body {
     font-family: "Freesentation-4Regular", sans-serif;
     margin: 0 auto;
     max-width: 480px;
+    height: 100%;
+    overflow: hidden;
     background-color: var(--white);
     color: var(--black);
     text-align: center;
+}
+
+main {
+    height: 100%;
+    overflow: scroll;
 }
 
 img {
