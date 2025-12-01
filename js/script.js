@@ -86,34 +86,6 @@ document.addEventListener("DOMContentLoaded", function () {
         map.trigger("resize");
     }, 1000);
 
-    //연락처확장
-    const callBtns = document.querySelectorAll(".callBtn");
-    callBtns.forEach((button) => {
-        button.addEventListener("click", function () {
-            if (this.className === "callBtn") {
-                this.className = "callBtn clicked";
-                this.textContent = this.textContent.replace("", "");
-            } else {
-                this.className = "callBtn";
-                this.textContent = this.textContent.replace("", "");
-            }
-        });
-    });
-
-    //계좌확장
-    const accountBtns = document.querySelectorAll(".accountBtn");
-    accountBtns.forEach((button) => {
-        button.addEventListener("click", function () {
-            if (this.className === "accountBtn") {
-                this.className = "accountBtn clicked";
-                this.textContent = this.textContent.replace("", "");
-            } else {
-                this.className = "accountBtn";
-                this.textContent = this.textContent.replace("", "");
-            }
-        });
-    });
-
     //계좌복사
     const accountCopys = document.querySelectorAll(".accountCopy");
     accountCopys.forEach((button) => {
@@ -137,50 +109,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
-async function uploadImages() {
-    const input = document.getElementById("fileInput");
-    const files = input.files;
 
-    if (!files.length) {
-        alert("사진을 선택해주세요.");
-        return;
-    }
-
-    const fileDataArray = [];
-
-    for (let file of files) {
-        const base64 = await convertToBase64(file);
-        fileDataArray.push({
-            fileName: file.name,
-            contentType: file.type,
-            base64Data: base64.split(",")[1], // base64 문자열만
-        });
-    }
-
-    try {
-        const response = await fetch(
-            "https://script.google.com/macros/s/AKfycbyH9IbdCwkgbMEQ5GQvakGHIp-u9DVkkJrmCjq943gJOXvkPBnNaQKRtQEYfuY5OttMQg/exec",
-            {
-                // 여기에 Web App exec URL
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ files: fileDataArray }),
-            }
-        );
-
-        const result = await response.json();
-        document.getElementById("result").innerText =
-            result.status === "success" ? "업로드 완료!" : "업로드 실패!";
-    } catch (err) {
-        document.getElementById("result").innerText = "업로드 중 오류 발생!";
-        console.error(err);
-    }
-}
-
-function convertToBase64(file) {
-    return new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result);
-        reader.readAsDataURL(file);
-    });
+function clicked(element) {
+    const isClicked = element.classList.toggle("clicked");
+    if (isClicked) element.textContent = element.textContent.replace("", "");
+    else element.textContent = element.textContent.replace("", "");
 }

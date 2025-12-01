@@ -75,7 +75,7 @@
                     </p>
                     <p class="large marginBtm">손동배</p>
                     <div class="call">
-                        <div class="callBtn">신랑측 연락하기 </div>
+                        <div class="callBtn" onclick="clicked(this)">신랑측 연락하기 </div>
                         <div class="calls">
                             <a class="callNum" href="tel:01081644976"
                                 >신랑 손동배 󰀄</a
@@ -100,7 +100,7 @@
                     </p>
                     <p class="large marginBtm">김지민</p>
                     <div class="call">
-                        <div class="callBtn">신부측 연락하기 </div>
+                        <div class="callBtn" onclick="clicked(this)">신부측 연락하기 </div>
                         <div class="calls">
                             <a class="callNum" href="tel:01081644976"
                                 >신부 김지민 󰀄</a
@@ -214,22 +214,26 @@
             <p class="marginBtm">빌라드지디 청담</p>
             <div id="map"></div>
             <div class="rowContainer marginBtm">
-                <a class="btn hasicon" href="tel:025427513"> 󰀄 연락하기 </a>
-                <a
-                    class="btn hasicon"
-                    href="https://naver.me/FN7XxqiL"
-                    target="_blank"
-                >
+                <a class="btn" href="tel:025427513"> 󰀄 연락하기 </a>
+                <a class="btn" href="https://naver.me/FN7XxqiL" target="_blank">
                     󰀧 지도보기
                 </a>
             </div>
             <p class="way marginBtm borderBtm">
-                <img src="src/subway.svg" alt="" style="width: 1rem" />
+                <img
+                    src="src/subway.svg"
+                    alt=""
+                    style="width: 1rem; height: 1rem"
+                />
                 지하철 이용
             </p>
             <p class="small marginBtm">청담역(7호선) 12번 출구 바로 앞</p>
             <p class="way marginBtm borderBtm">
-                <img src="src/bus.svg" alt="" style="width: 1rem" />
+                <img
+                    src="src/bus.svg"
+                    alt=""
+                    style="width: 1rem; height: 1rem"
+                />
                 버스 이용
             </p>
             <p class="small marginBtm">
@@ -237,7 +241,11 @@
                 버스번호 301, 343, 401, 2415, 3414, 3426
             </p>
             <p class="way marginBtm borderBtm">
-                <img src="src/car.svg" alt="" style="width: 1rem" />
+                <img
+                    src="src/car.svg"
+                    alt=""
+                    style="width: 1rem; height: 1rem"
+                />
                 차량 이용
             </p>
             <p class="small">
@@ -257,7 +265,11 @@
                     checked
                 />
                 <label for="notice1">
-                    <img src="src/food.svg" alt="" style="width: 0.75rem" />
+                    <img
+                        src="src/food.svg"
+                        alt=""
+                        style="width: 0.75rem; height: 0.75rem"
+                    />
                     식사안내
                 </label>
                 <input
@@ -267,7 +279,11 @@
                     id="notice2"
                 />
                 <label for="notice2">
-                    <img src="src/flower.svg" alt="" style="width: 0.75rem" />
+                    <img
+                        src="src/flower.svg"
+                        alt=""
+                        style="width: 0.75rem; height: 0.75rem"
+                    />
                     화환안내
                 </label>
                 <input
@@ -277,7 +293,11 @@
                     id="notice3"
                 />
                 <label for="notice3">
-                    <img src="src/parking.svg" alt="" style="width: 0.75rem" />
+                    <img
+                        src="src/parking.svg"
+                        alt=""
+                        style="width: 0.75rem; height: 0.75rem"
+                    />
                     주차안내
                 </label>
                 <div class="notice1text">식사 안내사항</div>
@@ -294,38 +314,38 @@
                     <table>
                         <tbody>
                             <tr class="accountCopy" title="계좌 복사하기">
-                                <td>손동배</td>
+                                <td class="borderRt">손동배</td>
                                 <td>카카오뱅크</td>
-                                <td>3333-12-8355339</td>
+                                <td class="borderRt">3333-12-8355339</td>
                                 <td>
                                     <img
                                         src="src/copy.svg"
                                         alt=""
-                                        style="width: 1rem"
+                                        style="width: 1rem; height: 1rem"
                                     />
                                 </td>
                             </tr>
                             <tr class="accountCopy" title="계좌 복사하기">
-                                <td>손병철</td>
+                                <td class="borderRt">손병철</td>
                                 <td>우리은행</td>
-                                <td>1002-961-216879</td>
+                                <td class="borderRt">1002-961-216879</td>
                                 <td>
                                     <img
                                         src="src/copy.svg"
                                         alt=""
-                                        style="width: 1rem"
+                                        style="width: 1rem; height: 1rem"
                                     />
                                 </td>
                             </tr>
                             <tr class="accountCopy" title="계좌 복사하기">
-                                <td>이용숙</td>
+                                <td class="borderRt">이용숙</td>
                                 <td>신한은행</td>
-                                <td>316-06-140860</td>
+                                <td class="borderRt">316-06-140860</td>
                                 <td>
                                     <img
                                         src="src/copy.svg"
                                         alt=""
-                                        style="width: 1rem"
+                                        style="width: 1rem; height: 1rem"
                                     />
                                 </td>
                             </tr>
@@ -339,38 +359,38 @@
                     <table>
                         <tbody>
                             <tr class="accountCopy" title="계좌 복사하기">
-                                <td>김지민</td>
+                                <td class="borderRt">김지민</td>
                                 <td>OO은행</td>
-                                <td>0000-000-000000</td>
+                                <td class="borderRt">0000-000-000000</td>
                                 <td>
                                     <img
                                         src="src/copy.svg"
                                         alt=""
-                                        style="width: 1rem"
+                                        style="width: 1rem; height: 1rem"
                                     />
                                 </td>
                             </tr>
                             <tr class="accountCopy" title="계좌 복사하기">
-                                <td>김훈기</td>
+                                <td class="borderRt">김훈기</td>
                                 <td>OO은행</td>
-                                <td>0000-000-000000</td>
+                                <td class="borderRt">0000-000-000000</td>
                                 <td>
                                     <img
                                         src="src/copy.svg"
                                         alt=""
-                                        style="width: 1rem"
+                                        style="width: 1rem; height: 1rem"
                                     />
                                 </td>
                             </tr>
                             <tr class="accountCopy" title="계좌 복사하기">
-                                <td>김효정</td>
+                                <td class="borderRt">김효정</td>
                                 <td>OO은행</td>
-                                <td>0000-000-000000</td>
+                                <td class="borderRt">0000-000-000000</td>
                                 <td>
                                     <img
                                         src="src/copy.svg"
                                         alt=""
-                                        style="width: 1rem"
+                                        style="width: 1rem; height: 1rem"
                                     />
                                 </td>
                             </tr>
@@ -381,9 +401,23 @@
         </div>
         <div class="container">방명록</div>
         <div class="container">
-            <input type="file" id="fileInput" accept="image/*" multiple />
-            <button onclick="uploadImages()">사진 업로드</button>
-            <p id="result"></p>
+            <p class="xsmall gray2">SNAPSHOT</p>
+            <p class="large marginBtm">스냅사진</p>
+            <p class="marginBtm">
+                결혼식의 행복한 순간을 사진에 담아 전달해주세요.
+            </p>
+            <a
+                class="btn upload"
+                href="https://forms.gle/oLnvwbkZ93ZG8yiB6"
+                target="_blank"
+            >
+                <img
+                    src="src/upload.svg"
+                    alt=""
+                    style="width: 0.75rem; height: 0.75rem"
+                />
+                사진올리기
+            </a>
         </div>
         <div class="ending">
             <img src="src/ending.jpg" alt="" />

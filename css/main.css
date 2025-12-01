@@ -70,6 +70,14 @@ img {
     border-bottom: 1px solid var(--gray);
 }
 
+.borderLft {
+    border-left: 1px solid var(--gray);
+}
+
+.borderRt {
+    border-right: 1px solid var(--gray);
+}
+
 .large {
     font-size: larger;
 }
@@ -103,6 +111,7 @@ img {
 
 .btn {
     cursor: pointer;
+    display: block;
     padding: 0.75rem 0;
     width: 100%;
     background-color: white;
@@ -111,14 +120,6 @@ img {
     font-size: small;
     text-decoration: none;
     color: var(--black);
-}
-
-.hasicon {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
 }
 
 .intro {
@@ -366,23 +367,30 @@ input[type="radio"] {
 }
 
 .accountBtn.clicked + .accounts {
-    height: 9rem;
+    height: 8rem;
 }
 
 .accounts table {
     margin: 0 auto;
-    border-collapse: collapse;
     width: fit-content;
+    border-collapse: separate;
+    border-spacing: 0 1rem;
 }
 
 .accounts td {
     padding: 0 0.5rem;
-    height: 1rem;
-    line-height: 2.5rem;
 }
 
 .accountCopy {
     cursor: pointer;
+}
+
+.upload {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
 }
 
 .ending {
