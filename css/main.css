@@ -180,8 +180,8 @@ img {
     justify-content: center;
     overflow: hidden;
     background-color: white;
-    transition: height 400ms, opacity 400ms, border-width 400ms;
-    border-top: 0px solid var(--gray);
+    transition: height 400ms, opacity 400ms, border-color 400ms;
+    border-top: 1px solid var(--gray);
     height: 0;
     opacity: 0;
 }
@@ -189,7 +189,7 @@ img {
 .callBtn.clicked + .calls {
     height: 8rem;
     opacity: 1;
-    border-width: 1px;
+    border-color: transparent;
 }
 
 .calls table {
@@ -378,8 +378,8 @@ input[type="radio"] {
     justify-content: center;
     overflow: hidden;
     background-color: white;
-    border-top: 0px solid var(--gray);
-    transition: height 400ms, opacity 400ms, border-width 400ms;
+    transition: height 400ms, opacity 400ms, border-color 400ms;
+    border-top: 1px solid var(--gray);
     height: 0;
     opacity: 0;
 }
@@ -387,7 +387,7 @@ input[type="radio"] {
 .accountBtn.clicked + .accounts {
     height: 8rem;
     opacity: 1;
-    border-width: 1px;
+    border-color: 1px;
 }
 
 .accounts table {
