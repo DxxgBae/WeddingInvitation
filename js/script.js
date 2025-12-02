@@ -1,29 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // 줌방지
-    function applyZoomBlurToImages() {
-        const currentViewportWidth = window.innerWidth;
-        const idealClientWidth = document.documentElement.clientWidth;
-        const currentScale = idealClientWidth / currentViewportWidth;
-        let blurAmount = 0;
-        if (currentScale > 1.02) {
-            const BLUR_MULTIPLIER = 15;
-            blurAmount = Math.min((currentScale - 1) * BLUR_MULTIPLIER, 10);
-        }
-        const images = document.querySelectorAll("img");
-        images.forEach((img) => {
-            if (blurAmount > 0) {
-                img.style.filter = `blur(${blurAmount}px)`;
-                img.style.transition = "filter 0.1s ease-out";
-            } else {
-                img.style.filter = "none";
-            }
-        });
-    }
-    setInterval(applyZoomBlurToImages, 100);
-    window.addEventListener("resize", applyZoomBlurToImages);
-    window.onload = applyZoomBlurToImages;
-
-    // 디데이 카운트다운
+    // 카운트다운
     const countDownDate = new Date("Feb 1, 2026 11:30:00").getTime();
     const ddayElement = document.querySelector(".dday");
     const dhourElement = document.querySelector(".dhour");
