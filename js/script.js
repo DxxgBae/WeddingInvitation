@@ -1,21 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // 갤러리
-    window.fslightbox_config = {
-        zoom_buttons: false,
-    };
-    const gallery = document.querySelector(".gallery");
-    const showMoreButton = document.querySelector(".galleryShowMore");
-    const items = gallery.querySelectorAll("a");
-    const maxItems = 9;
-    if (items.length <= maxItems) showMoreButton.style.display = "none";
-    showMoreButton.addEventListener("click", function () {
-        gallery.classList.add("expanded");
-        showMoreButton.style.display = "none";
-        if (typeof refreshFsLightbox === "function") {
-            refreshFsLightbox();
-        }
-    });
-
     // 디데이 카운트다운
     const countDownDate = new Date("Feb 1, 2026 11:30:00").getTime();
     const ddayElement = document.querySelector(".dday");
@@ -119,6 +102,24 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch((error) => console.error("Error:", error));
 });
+
+function showMore(element) {
+    window.fslightbox_config = {
+        zoom_buttons: false,
+    };
+    const gallery = document.querySelector(".gallery");
+    const showMoreButton = document.querySelector(".galleryShowMore");
+    const items = gallery.querySelectorAll("a");
+    const maxItems = 9;
+    if (items.length <= maxItems) showMoreButton.style.display = "none";
+    showMoreButton.addEventListener("click", function () {
+        gallery.classList.add("expanded");
+        showMoreButton.style.display = "none";
+        if (typeof refreshFsLightbox === "function") {
+            refreshFsLightbox();
+        }
+    });
+}
 
 function clicked(element) {
     const isClicked = element.classList.toggle("clicked");
