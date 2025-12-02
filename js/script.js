@@ -1,4 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
+    AOS.init({
+        duration: 2000,
+        once: true,
+    });
+
+    window.fslightbox_config = {
+        zoom_buttons: false,
+        thumbs: false,
+    };
+
     // 카운트다운
     const countDownDate = new Date("Feb 1, 2026 11:30:00").getTime();
     const ddayElement = document.querySelector(".dday");
@@ -72,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
         map.trigger("resize");
     }, 1000);
 
-    // 방명록
+    // 방명록 불러오기
     const guestbookUrl =
         "https://docs.google.com/spreadsheets/d/1BsjMFCJLE8gI2KQS4nfcOxfofJ7vzepg7UMfD0MzM88/gviz/tq?tqx=out:json&gid=0";
     fetch(guestbookUrl)
@@ -91,7 +101,21 @@ document.addEventListener("DOMContentLoaded", function () {
                 ".swiper-guestbook .swiper-wrapper"
             );
             data.forEach((item) => {
-                loadGuestbook(wrapper, item);
+                if (item.show) {
+                    const slide = document.createElement("div");
+                    slide.classList.add("swiper-slide");
+                    slide.classList.add("guestbookSlide");
+                    const x = document.createElement("div");
+                    x.textContent = "x";
+                    slide.appendChild(x);
+                    const id = document.createElement("div");
+                    id.textContent = item.id;
+                    slide.appendChild(id);
+                    const text = document.createElement("div");
+                    text.textContent = item.content;
+                    slide.appendChild(text);
+                    wrapper.appendChild(slide);
+                }
             });
             new Swiper(".swiper-guestbook", {
                 direction: "vertical",
@@ -102,24 +126,77 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         })
         .catch((error) => console.error("Error:", error));
+
+    // 방명록 쓰기
+    const SCRIPT_URL =
+        "https://script.google.com/macros/s/AKfycbxOMpo9Fci-CoP0REgItbBeLC1SxMXiu6csrks8mhPN7zZduxAdsBxvkGE4ZyIJukyh/exec";
+    document
+        .getElementById("dataForm")
+        .addEventListener("submit", function (e) {
+            e.preventDefault();
+            const form = e.target;
+            const formInputData = new FormData(form);
+            const submittedName = formInputData.get("name") || "익명";
+            const submittedContent = formInputData.get("content") || "";
+            if (
+                containsBadWordsJS(submittedName) ||
+                containsBadWordsJS(submittedContent)
+            ) {
+                alert(
+                    "⚠️ 입력하신 이름 또는 내용에 부적절한 단어가 포함되어 있습니다."
+                );
+                return;
+            }
+            const formData = new URLSearchParams(formInputData);
+
+            fetch(SCRIPT_URL, {
+                method: "POST",
+                body: formData,
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.result === "success") {
+                        alert("✅ 방명록 등록을 성공했습니다!");
+                        const wrapper = document.querySelector(
+                            ".swiper-guestbook .swiper-wrapper"
+                        );
+                        if (wrapper) {
+                            const slide = document.createElement("div");
+                            slide.classList.add(
+                                "swiper-slide",
+                                "guestbookSlide"
+                            );
+                            const x = document.createElement("div");
+                            x.textContent = "x";
+                            slide.appendChild(x);
+                            const id = document.createElement("div");
+                            id.textContent = submittedName;
+                            slide.appendChild(id);
+                            const text = document.createElement("div");
+                            text.textContent = submittedContent;
+                            slide.appendChild(text);
+                            wrapper.prepend(slide);
+                        }
+                        form.reset();
+                    } else {
+                        const message =
+                            data.message || "방명록 등록을 실패했습니다.";
+                        alert(`❌ ${message}`);
+                    }
+                })
+                .catch((error) => {
+                    console.error("Fetch 오류:", error);
+                    alert("🚨 서버와 통신 중 문제가 발생했습니다.");
+                });
+        });
 });
 
 function showMore(element) {
-    window.fslightbox_config = {
-        zoom_buttons: false,
-    };
     const gallery = document.querySelector(".gallery");
-    const showMoreButton = document.querySelector(".galleryShowMore");
-    const items = gallery.querySelectorAll("a");
-    const maxItems = 9;
-    if (items.length <= maxItems) showMoreButton.style.display = "none";
-    showMoreButton.addEventListener("click", function () {
-        gallery.classList.add("expanded");
-        showMoreButton.style.display = "none";
-        if (typeof refreshFsLightbox === "function") {
-            refreshFsLightbox();
-        }
-    });
+    const isClicked = gallery.classList.toggle("expanded");
+    if (isClicked) element.textContent = "접기 ";
+    else element.textContent = "더보기 ";
+    if (typeof refreshFsLightbox === "function") refreshFsLightbox();
 }
 
 function clicked(element) {
@@ -145,20 +222,154 @@ function copyAccount(element) {
         });
 }
 
-function loadGuestbook(wrapper, item) {
-    if (item.show) {
-        const slide = document.createElement("div");
-        slide.classList.add("swiper-slide");
-        slide.classList.add("guestbookSlide");
-        const x = document.createElement("div");
-        x.textContent = "x";
-        slide.appendChild(x);
-        const id = document.createElement("div");
-        id.textContent = item.id;
-        slide.appendChild(id);
-        const text = document.createElement("div");
-        text.textContent = item.text;
-        slide.appendChild(text);
-        wrapper.appendChild(slide);
+function containsBadWordsJS(text) {
+    const BAD_WORDS = [
+        // --- 1. 주요 비속어, 욕설 (완형) ---
+        "씨발",
+        "시발",
+        "병신",
+        "개새끼",
+        "좆같",
+        "존나",
+        "애미",
+        "애비",
+        "창년",
+        "보지",
+        "자지",
+        "느금마",
+        "니애미",
+        "니애비",
+        "꺼져",
+        "미친",
+        "돌아이",
+        "등신",
+        "병맛",
+        "염병",
+        "지랄",
+        "걸레",
+        "또라이",
+        "호로",
+        "쌍년",
+        "쌍놈",
+        "호구",
+        "병자",
+        "정신병자",
+        "장애인",
+        "고자",
+        "씹",
+        "개년",
+        "개놈",
+        "양아치",
+        "쓰레기",
+
+        // --- 2. 초성 욕설 및 변형 (띄어쓰기 없이 검사됨) ---
+        "ㅅㅂ",
+        "ㅆㅂ",
+        "ㅄ",
+        "ㅂㅅ",
+        "ㅈㄴ",
+        "ㅈㄱㅌ",
+        "ㄴㄱㅁ",
+        "ㅆㄲ",
+        "ㅁㅊㄴ",
+        "ㅇㅁㅊㄴ",
+        "ㅅㄲㅇ",
+        "ㅈㅅ",
+        "ㅎㄹ",
+        "ㄱㅅㄲ",
+        "ㄱㄱㄷ",
+        "ㄱㅎ",
+        "ㄱㅆ",
+        "ㅅㄲ",
+        "ㅅㅂㄴ",
+        "ㅅㅂㄹ",
+        "ㅈㄹ",
+        "ㅁㅈㅎ",
+        "ㅇㅂ",
+        "ㄷㅈㄹ",
+        "ㄱㄷㅈ",
+        "ㄱㄷ",
+        "ㄱㅈ",
+
+        // --- 3. 은어 및 기타 변형 ---
+        "쉬벌",
+        "슈발",
+        "쉽알",
+        "좆나",
+        "존나",
+        "졸라",
+        "개때끼",
+        "쌔끼",
+        "개쓰레기",
+
+        // --- 4. 음란성/성적 단어 ---
+        "섹스",
+        "성교",
+        "자위",
+        "포르노",
+        "av",
+        "야동",
+        "강간",
+        "성매매",
+        "오피",
+        "키스방",
+        "유흥",
+        "모텔",
+        "ㅂㅈ",
+        "ㅈㅈ",
+        "ㅂㅈㅇ",
+        "ㅈㅈㅇ",
+        "ㅅㅅ",
+        "ㅇㄷ",
+        "ㅁㅌ",
+
+        // --- 5. 광고성/스팸성 키워드 (URL 포함) ---
+        "광고",
+        "수익",
+        "토토",
+        "도박",
+        "머니",
+        "대출",
+        "현금",
+        "비아그라",
+        "릴게임",
+        "http",
+        "www",
+        "클릭",
+        "배팅",
+        "로또",
+        "추천인",
+        "코드",
+        "텔레그램",
+        "오픈톡",
+        "톡방",
+        "주소",
+        "링크",
+
+        // --- 6. 혐오 및 정치적 극단 키워드 ---
+        "일베",
+        "메갈",
+        "페미",
+        "노무현",
+        "김대중",
+        "전두환",
+        "문재인",
+        "윤석열",
+        "종북",
+        "좌빨",
+        "우꼴",
+        "홍어",
+        "가세연",
+    ];
+    if (!text) return false;
+    const filteredText = text
+        .toString()
+        .toLowerCase()
+        .replace(/[\s\.\,\!\~\`\+\=\-\*]/g, "");
+    for (const badWord of BAD_WORDS) {
+        if (filteredText.includes(badWord)) {
+            return true;
+        }
     }
+    return false;
 }

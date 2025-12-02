@@ -9,6 +9,10 @@
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
         />
+        <link
+            href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+            rel="stylesheet"
+        />
         <link rel="stylesheet" href="css/main-g3425g342.css" />
         <script
             type="text/javascript"
@@ -21,11 +25,11 @@
             <p class="introText large textleft">DONGBAE</p>
             <p class="introText large textright">JIMIN</p>
         </div>
-        <div class="container">
+        <div class="container" data-aos="fade-up">
             <p class="large marginBtm">손동배❤️김지민</p>
             <p class="large">2026년 2월 1일, 빌라드지디 청담</p>
         </div>
-        <div class="container">
+        <div class="container" data-aos="fade-up">
             <div class="ddayContainer marginBtm">
                 <div class="ddayItem">
                     <div class="xsmall gray2">DAY</div>
@@ -52,7 +56,7 @@
         <div class="container">
             <p class="xsmall gray2">INVITATION</p>
             <p class="large marginBtm">소중한 분들을 초대합니다.</p>
-            <p class="invitation">
+            <p class="invitation" data-aos="fade-up">
                 이제는 눈빛만 봐도<br />
                 서로의 마음을 알 수 있는 두 사람.<br />
                 <br />
@@ -64,15 +68,15 @@
                 새로운 출발에 따듯한 축복을 더해 주시길 바라며<br />
                 소중한 분들을 진심을 담아 초대합니다.<br />
                 <br />
+                <small>- 손동배, 김지민 올림 -</small>
             </p>
-            <small>- 손동배, 김지민 올림 -</small>
         </div>
         <div class="container">
             <div class="info">
                 <div>
                     <p class="xsmall gray2">GROOM</p>
                     <p class="marginBtm">신랑</p>
-                    <div class="marginBtm">
+                    <div class="marginBtm" data-aos="fade-up">
                         <img src="src/groom.jpg" alt="" />
                     </div>
                     <p class="marginBtm">
@@ -127,7 +131,7 @@
                 <div>
                     <p class="xsmall gray2">BRIDE</p>
                     <p class="marginBtm">신부</p>
-                    <div class="marginBtm">
+                    <div class="marginBtm" data-aos="fade-up">
                         <img src="src/bride.jpg" alt="" />
                     </div>
                     <p class="marginBtm">
@@ -184,7 +188,7 @@
         <div class="container">
             <p class="xsmall gray2">GALLERY</p>
             <p class="large marginBtm">웨딩사진</p>
-            <div class="gallery marginBtm">
+            <div class="gallery marginBtm" data-aos="fade-up">
                 <a data-fslightbox="gallery" href="src/sample.jpg">
                     <img src="src/sample.jpg" alt="" />
                 </a>
@@ -219,13 +223,19 @@
                     <img src="src/sample.jpg" alt="" />
                 </a>
             </div>
-            <div class="btn galleryShowMore">더보기 </div>
+            <div
+                class="btn galleryShowMore"
+                data-aos="fade-up"
+                onclick="showMore(this)"
+            >
+                더보기 
+            </div>
         </div>
         <div class="container">
             <p class="xsmall gray2">WEDDING DAY</p>
             <p class="large">2026년 2월 1일</p>
             <p class="marginBtm">일요일 오전 11시 30분</p>
-            <div class="calendar">
+            <div class="calendar" data-aos="fade-up">
                 <div class="week borderTop">
                     <div class="day holiday">일</div>
                     <div class="day">월</div>
@@ -284,14 +294,14 @@
             <p class="xsmall gray2">LOCATION</p>
             <p class="large">오시는길</p>
             <p class="marginBtm">빌라드지디 청담</p>
-            <div id="map"></div>
-            <div class="mapBtns marginBtm">
+            <div id="map" data-aos="fade-up"></div>
+            <div class="mapBtns marginBtm" data-aos="fade-up">
                 <a class="btn" href="tel:025427513">󰀄 연락하기</a>
                 <a class="btn" href="https://naver.me/FN7XxqiL" target="_blank">
                     󰀧 지도보기
                 </a>
             </div>
-            <p class="way marginBtm borderBtm">
+            <p class="way marginBtm borderBtm" data-aos="fade-up">
                 <img
                     src="src/subway.svg"
                     alt=""
@@ -299,8 +309,10 @@
                 />
                 지하철 이용
             </p>
-            <p class="small marginBtm">청담역(7호선) 12번 출구 바로 앞</p>
-            <p class="way marginBtm borderBtm">
+            <p class="small marginBtm" data-aos="fade-up">
+                청담역(7호선) 12번 출구 바로 앞
+            </p>
+            <p class="way marginBtm borderBtm" data-aos="fade-up">
                 <img
                     src="src/bus.svg"
                     alt=""
@@ -308,11 +320,11 @@
                 />
                 버스 이용
             </p>
-            <p class="small marginBtm">
+            <p class="small marginBtm" data-aos="fade-up">
                 청담역, 경기고교 정류장 하차<br />
                 버스번호 301, 343, 401, 2415, 3414, 3426
             </p>
-            <p class="way marginBtm borderBtm">
+            <p class="way marginBtm borderBtm" data-aos="fade-up">
                 <img
                     src="src/car.svg"
                     alt=""
@@ -320,7 +332,7 @@
                 />
                 차량 이용
             </p>
-            <p class="small">
+            <p class="small" data-aos="fade-up">
                 서울특별시 강남구 학동로 519<br />
                 서울특별시 강남구 청담동 73-4
             </p>
@@ -328,7 +340,7 @@
         <div class="container">
             <p class="xsmall gray2">NOTICE</p>
             <p class="large marginBtm">안내사항</p>
-            <div class="notice marginBtm">
+            <div class="notice marginBtm" data-aos="fade-up">
                 <input
                     class="notice1"
                     type="radio"
@@ -394,7 +406,7 @@
         <div class="container">
             <p class="xsmall gray2">ACCOUNT</p>
             <p class="large marginBtm">마음 전하실 곳</p>
-            <div class="account marginBtm">
+            <div class="account marginBtm" data-aos="fade-up">
                 <div class="accountBtn" onclick="clicked(this)">신랑측 </div>
                 <div class="accounts">
                     <table>
@@ -451,7 +463,7 @@
                     </table>
                 </div>
             </div>
-            <div class="account">
+            <div class="account" data-aos="fade-up">
                 <div class="accountBtn" onclick="clicked(this)">신부측 </div>
                 <div class="accounts">
                     <table>
@@ -512,25 +524,40 @@
         <div class="container">
             <p class="xsmall gray2">GUESTBOOK</p>
             <p class="large marginBtm">방명록</p>
-            <div>
-                <div>이름</div>
-                <div>내용</div>
-                <div>작성하기</div>
-            </div>
-            <div class="swiper-guestbook">
+            <form id="dataForm" data-aos="fade-up">
+                <label for="name">이름:</label>
+                <input type="text" id="name" name="name" required /><br /><br />
+
+                <label for="password">비밀번호:</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    required
+                /><br /><br />
+
+                <label for="content">내용:</label>
+                <textarea id="content" name="content" required></textarea
+                ><br /><br />
+
+                <button type="submit">시트에 데이터 제출</button>
+                <p id="message"></p>
+            </form>
+            <div class="swiper-guestbook" data-aos="fade-up">
                 <div class="swiper-wrapper"></div>
             </div>
         </div>
         <div class="container">
             <p class="xsmall gray2">SNAPSHOT</p>
             <p class="large marginBtm">스냅사진</p>
-            <p class="marginBtm">
+            <p class="marginBtm" data-aos="fade-up">
                 결혼식의 행복한 순간을 사진에 담아 전달해주세요.
             </p>
             <a
                 class="btn upload"
                 href="https://forms.gle/oLnvwbkZ93ZG8yiB6"
                 target="_blank"
+                data-aos="fade-up"
             >
                 <img
                     src="src/upload.svg"
@@ -542,7 +569,7 @@
         </div>
         <div class="ending">
             <img src="src/ending.jpg" alt="" />
-            <p class="endingText">
+            <p class="endingText" data-aos="fade-up">
                 “예쁜 예감이 들었다.<br />
                 우리는 언제나 손을 잡고 있게 될 것이다.”<br />
                 <br />
@@ -557,5 +584,6 @@
         <script src="js/script.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/fslightbox@3.4.1/index.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     </body>
 </html>
