@@ -27,8 +27,6 @@
     word-break: keep-all;
     margin: 0;
     padding: 0;
-    touch-action: pan-y;
-    touch-action: manipulation;
 }
 
 *::-webkit-scrollbar {
@@ -62,9 +60,6 @@ img {
     height: 100%;
     object-fit: cover;
     display: block;
-    -webkit-user-select: none;
-    user-select: none;
-    touch-action: manipulation;
 }
 
 .marginBtm {
