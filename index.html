@@ -6,10 +6,6 @@
         <title>손동배❤️김지민 결혼합니다.</title>
         <link rel="icon" href="/src/favicon.ico" />
         <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-        />
-        <link
             href="https://unpkg.com/aos@2.3.1/dist/aos.css"
             rel="stylesheet"
         />
@@ -79,11 +75,11 @@
                     <div class="marginBtm" data-aos="fade-up">
                         <img src="src/groom.jpg" alt="" />
                     </div>
-                    <p class="marginBtm">
+                    <p class="marginBtm" data-aos="fade-up">
                         손병철·이용숙 <small>의 차남</small>
                     </p>
-                    <p class="large marginBtm">손동배</p>
-                    <div class="call">
+                    <p class="large marginBtm" data-aos="fade-up">손동배</p>
+                    <div class="call" data-aos="fade-up">
                         <div class="callBtn" onclick="clicked(this)">
                             신랑측 연락하기 
                         </div>
@@ -134,11 +130,11 @@
                     <div class="marginBtm" data-aos="fade-up">
                         <img src="src/bride.jpg" alt="" />
                     </div>
-                    <p class="marginBtm">
+                    <p class="marginBtm" data-aos="fade-up">
                         김훈기·김효정 <small>의 장녀</small>
                     </p>
-                    <p class="large marginBtm">김지민</p>
-                    <div class="call">
+                    <p class="large marginBtm" data-aos="fade-up">김지민</p>
+                    <div class="call" data-aos="fade-up">
                         <div class="callBtn" onclick="clicked(this)">
                             신부측 연락하기 
                         </div>
@@ -523,29 +519,24 @@
         </div>
         <div class="container">
             <p class="xsmall gray2">GUESTBOOK</p>
-            <p class="large marginBtm">방명록</p>
-            <form id="dataForm" data-aos="fade-up">
-                <label for="name">이름:</label>
-                <input type="text" id="name" name="name" required /><br /><br />
-
-                <label for="password">비밀번호:</label>
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    required
-                /><br /><br />
-
-                <label for="content">내용:</label>
-                <textarea id="content" name="content" required></textarea
-                ><br /><br />
-
-                <button type="submit">시트에 데이터 제출</button>
+            <p class="large">방명록</p>
+            <div class="writeBtn" onclick="clicked(this)" data-aos="fade-up">
+                작성하기 
+            </div>
+            <form id="dataForm" class="writeContainer marginBtm">
+                <label for="name">이름</label>
+                <input type="text" id="name" name="name" required />
+                <br />
+                <label for="password">암호</label>
+                <input type="password" id="password" name="password" required />
+                <br />
+                <label for="content">내용</label>
+                <textarea id="content" name="content" required></textarea>
+                <br />
+                <button type="submit">확인</button>
                 <p id="message"></p>
             </form>
-            <div class="swiper-guestbook" data-aos="fade-up">
-                <div class="swiper-wrapper"></div>
-            </div>
+            <div class="guestbooks" data-aos="fade-up"></div>
         </div>
         <div class="container">
             <p class="xsmall gray2">SNAPSHOT</p>
@@ -583,7 +574,6 @@
         </div>
         <script src="js/script.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/fslightbox@3.4.1/index.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     </body>
 </html>

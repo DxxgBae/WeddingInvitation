@@ -82,50 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
         map.trigger("resize");
     }, 1000);
 
-    // 방명록 불러오기
-    const guestbookUrl =
-        "https://docs.google.com/spreadsheets/d/1BsjMFCJLE8gI2KQS4nfcOxfofJ7vzepg7UMfD0MzM88/gviz/tq?tqx=out:json&gid=0";
-    fetch(guestbookUrl)
-        .then((response) => response.text())
-        .then((text) => {
-            const json = JSON.parse(text.slice(47, -2));
-            const keys = json.table.cols.map((c) => c.label);
-            const data = json.table.rows
-                .map((r) =>
-                    Object.fromEntries(
-                        keys.map((key, i) => [key, r.c[i]?.v ?? ""])
-                    )
-                )
-                .reverse();
-            const wrapper = document.querySelector(
-                ".swiper-guestbook .swiper-wrapper"
-            );
-            data.forEach((item) => {
-                if (item.show) {
-                    const slide = document.createElement("div");
-                    slide.classList.add("swiper-slide");
-                    slide.classList.add("guestbookSlide");
-                    const x = document.createElement("div");
-                    x.textContent = "x";
-                    slide.appendChild(x);
-                    const id = document.createElement("div");
-                    id.textContent = item.id;
-                    slide.appendChild(id);
-                    const text = document.createElement("div");
-                    text.textContent = item.content;
-                    slide.appendChild(text);
-                    wrapper.appendChild(slide);
-                }
-            });
-            new Swiper(".swiper-guestbook", {
-                direction: "vertical",
-                loop: false,
-                effect: "slide",
-                slidesPerView: "auto",
-                spaceBetween: 8,
-            });
-        })
-        .catch((error) => console.error("Error:", error));
+    getGuestBook();
 
     // 방명록 쓰기
     const SCRIPT_URL =
@@ -157,26 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 .then((data) => {
                     if (data.result === "success") {
                         alert("✅ 방명록 등록을 성공했습니다!");
-                        const wrapper = document.querySelector(
-                            ".swiper-guestbook .swiper-wrapper"
-                        );
-                        if (wrapper) {
-                            const slide = document.createElement("div");
-                            slide.classList.add(
-                                "swiper-slide",
-                                "guestbookSlide"
-                            );
-                            const x = document.createElement("div");
-                            x.textContent = "x";
-                            slide.appendChild(x);
-                            const id = document.createElement("div");
-                            id.textContent = submittedName;
-                            slide.appendChild(id);
-                            const text = document.createElement("div");
-                            text.textContent = submittedContent;
-                            slide.appendChild(text);
-                            wrapper.prepend(slide);
-                        }
+                        getGuestBook();
                         form.reset();
                     } else {
                         const message =
@@ -220,6 +158,46 @@ function copyAccount(element) {
         .catch((err) => {
             alert("복사에 실패했습니다.");
         });
+}
+
+function getGuestBook() {
+    const guestbooks = document.querySelector(".guestbooks");
+    guestbooks.innerHTML = "";
+    const guestbookUrl =
+        "https://docs.google.com/spreadsheets/d/1BsjMFCJLE8gI2KQS4nfcOxfofJ7vzepg7UMfD0MzM88/gviz/tq?tqx=out:json&gid=0";
+    fetch(guestbookUrl)
+        .then((response) => response.text())
+        .then((text) => {
+            const json = JSON.parse(text.slice(47, -2));
+            const keys = json.table.cols.map((c) => c.label);
+            const data = json.table.rows
+                .map((r) =>
+                    Object.fromEntries(
+                        keys.map((key, i) => [key, r.c[i]?.v ?? ""])
+                    )
+                )
+                .reverse();
+            data.forEach((item) => {
+                if (item.show) {
+                    const container = document.createElement("div");
+                    container.classList.add("guestbook");
+                    const id = document.createElement("div");
+                    id.classList.add("guestbookId");
+                    id.textContent = item.id;
+                    container.appendChild(id);
+                    const delBtn = document.createElement("div");
+                    delBtn.classList.add("guestbookDel");
+                    delBtn.textContent = "󰀣";
+                    container.appendChild(delBtn);
+                    const contents = document.createElement("pre");
+                    contents.classList.add("guestbookContents");
+                    contents.textContent = item.content;
+                    container.appendChild(contents);
+                    guestbooks.appendChild(container);
+                }
+            });
+        })
+        .catch((error) => console.error("Error:", error));
 }
 
 function containsBadWordsJS(text) {
