@@ -36,7 +36,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 (distance % (1000 * 60 * 60)) / (1000 * 60)
             );
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            if (ddayElement) ddayElement.textContent = formatNumber(days);
+            if (ddayElement)
+                ddayElement.textContent = `D-${formatNumber(days)}`;
             if (dhourElement) dhourElement.textContent = formatNumber(hours);
             if (dminElement) dminElement.textContent = formatNumber(minutes);
             if (dsecElement) dsecElement.textContent = formatNumber(seconds);
@@ -52,7 +53,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 (elapsed % (1000 * 60 * 60)) / (1000 * 60)
             );
             const seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
-            if (ddayElement) ddayElement.textContent = formatNumber(days);
+            if (ddayElement)
+                ddayElement.textContent = `D+${formatNumber(days)}`;
             if (dhourElement) dhourElement.textContent = formatNumber(hours);
             if (dminElement) dminElement.textContent = formatNumber(minutes);
             if (dsecElement) dsecElement.textContent = formatNumber(seconds);

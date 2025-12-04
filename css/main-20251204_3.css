@@ -36,6 +36,7 @@
     margin: 0;
     padding: 0;
     font-family: "Freesentation-4Regular", sans-serif;
+    color: var(--black);
 }
 
 *::-webkit-scrollbar {
@@ -54,7 +55,6 @@ body {
     margin: 0 auto;
     max-width: 480px;
     background-color: var(--white);
-    color: var(--black);
     text-align: center;
 }
 
@@ -456,7 +456,7 @@ input[type="radio"] {
 .writeContainer input,
 .writeContainer textarea,
 .writeContainer button {
-    padding: 0.25rem 0.5rem;
+    padding: 0.5rem;
     width: calc(100% - 3rem);
     height: 2rem;
     border: 1px solid var(--gray);
@@ -476,11 +476,7 @@ input[type="radio"] {
 }
 
 .writeContainer .sendBtn {
-    height: 2rem;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     font-size: small;
 }
 
@@ -535,5 +531,9 @@ input[type="radio"] {
     top: 4rem;
     left: 0;
     width: 100%;
+    color: var(--white);
+}
+
+.endingText small {
     color: var(--white);
 }
