@@ -444,7 +444,7 @@ input[type="radio"] {
 }
 
 .writeBtn.clicked + .writeContainer {
-    height: 14rem;
+    height: 15rem;
     opacity: 1;
 }
 
@@ -458,6 +458,7 @@ input[type="radio"] {
 .writeContainer button {
     padding: 0.25rem 0.5rem;
     width: calc(100% - 3rem);
+    height: 2rem;
     border: 1px solid var(--gray);
     border-radius: 4px;
     background-color: white;
@@ -474,9 +475,12 @@ input[type="radio"] {
     resize: none;
 }
 
-.writeContainer button {
-    padding: 0.75rem;
+.writeContainer .sendBtn {
+    height: 2rem;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: small;
 }
 
