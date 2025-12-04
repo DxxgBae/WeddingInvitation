@@ -9,7 +9,7 @@
             href="https://unpkg.com/aos@2.3.1/dist/aos.css"
             rel="stylesheet"
         />
-        <link rel="stylesheet" href="css/main-g3425g342.css" />
+        <link rel="stylesheet" href="css/main-20251204.css" />
         <script
             type="text/javascript"
             src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=601tlnlr3n"
@@ -528,6 +528,7 @@
                     id="name"
                     name="name"
                     autocomplete="off"
+                    placeholder="이름 또는 별칭"
                     required
                 />
                 <label for="password">암호</label>
@@ -536,6 +537,7 @@
                     id="password"
                     name="password"
                     autocomplete="off"
+                    placeholder="방명록 삭제를 위한 암호"
                     required
                 />
                 <label for="content">내용</label>
@@ -543,12 +545,13 @@
                     id="content"
                     name="content"
                     autocomplete="off"
+                    placeholder="전하실 말씀"
                     required
                 ></textarea>
-                <button type="submit">전달하기</button>
+                <button type="submit" class="sendBtn">전달하기</button>
                 <p id="message"></p>
             </form>
-            <div class="guestbooks" data-aos="fade-up"></div>
+            <div class="guestbooks"></div>
         </div>
         <div class="container">
             <p class="xsmall gray2">SNAPSHOT</p>

@@ -1,5 +1,5 @@
 const SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbzNTAIyzpx_xkMlVdsTjjCs1xifaoM9_h6HJvDyagfzqh-9z4XFZE7SFOQ5MPqk1vo/exec";
+    "https://script.google.com/macros/s/AKfycbwqH_LxD0DT4J8Mplc5RDyX_N_OgkvDPruY1Gn8u1f-Hf9Lu5Fh2gM2GIYgamiuYFaq/exec";
 
 document.addEventListener("DOMContentLoaded", function () {
     AOS.init({
@@ -106,7 +106,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
             const formData = new URLSearchParams(formInputData);
-
+            const sendBtn = document.querySelector(".sendBtn");
+            sendBtn.textContent = "전달중...";
             fetch(SCRIPT_URL, {
                 method: "POST",
                 body: formData,
@@ -122,10 +123,12 @@ document.addEventListener("DOMContentLoaded", function () {
                             data.message || "방명록 등록을 실패했습니다.";
                         alert(`❌ ${message}`);
                     }
+                    sendBtn.textContent = "전달하기";
                 })
                 .catch((error) => {
                     console.error("Fetch 오류:", error);
                     alert("🚨 서버와 통신 중 문제가 발생했습니다.");
+                    sendBtn.textContent = "전달하기";
                 });
         });
 });
@@ -164,6 +167,7 @@ function copyAccount(element) {
 function getGuestBook() {
     const guestbooks = document.querySelector(".guestbooks");
     guestbooks.innerHTML = "";
+    const fragment = document.createDocumentFragment();
     const guestbookUrl =
         "https://docs.google.com/spreadsheets/d/1BsjMFCJLE8gI2KQS4nfcOxfofJ7vzepg7UMfD0MzM88/gviz/tq?tqx=out:json&gid=0";
     fetch(guestbookUrl)
@@ -181,6 +185,7 @@ function getGuestBook() {
             data.forEach((item) => {
                 if (item.show) {
                     const container = document.createElement("div");
+                    container.setAttribute("data-aos", "fade-up");
                     container.classList.add("guestbook");
                     const name = document.createElement("div");
                     name.classList.add("guestbookId");
@@ -198,16 +203,17 @@ function getGuestBook() {
                     contents.classList.add("guestbookContents");
                     contents.textContent = item.content;
                     container.appendChild(contents);
-                    guestbooks.appendChild(container);
+                    fragment.appendChild(container);
                 }
             });
+            guestbooks.appendChild(fragment);
         })
         .catch((error) => console.error("Error:", error));
 }
 
 function delGuestBook(element) {
     const idToDelete = element.getAttribute("data-id");
-    const password = prompt("삭제를 위해 비밀번호를 입력하세요:");
+    const password = prompt("삭제를 위해 암호를 입력하세요:");
     if (password === null || password.trim() === "") return;
     const url = new URL(SCRIPT_URL);
     fetch(url, {

@@ -452,6 +452,11 @@ input[type="radio"] {
     font-size: medium;
 }
 
+.writeContainer input::placeholder,
+.writeContainer textarea::placeholder {
+    color: var(--gray2);
+}
+
 .writeContainer textarea {
     height: 6rem;
     resize: none;
