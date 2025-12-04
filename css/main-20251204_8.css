@@ -435,7 +435,7 @@ input[type="radio"] {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 0.5rem 0;
     overflow: hidden;
     transition: padding 400ms, height 400ms, opacity 400ms;
@@ -459,7 +459,7 @@ input[type="radio"] {
 .writeContainer textarea,
 .writeContainer button {
     padding: 0.5rem;
-    width: calc(100% - 5rem);
+    width: calc(100% - 4rem);
     height: 2rem;
     border: 1px solid var(--gray);
     border-radius: 8px;
