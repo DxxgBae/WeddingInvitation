@@ -187,7 +187,6 @@ function getGuestBook() {
             data.forEach((item) => {
                 if (item.show) {
                     const container = document.createElement("div");
-                    container.setAttribute("data-aos", "fade-up");
                     container.classList.add("guestbook");
                     const name = document.createElement("div");
                     name.classList.add("guestbookId");
