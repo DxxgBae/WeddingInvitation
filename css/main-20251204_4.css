@@ -478,6 +478,9 @@ input[type="radio"] {
 .writeContainer .sendBtn {
     cursor: pointer;
     font-size: small;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .guestbooks {
