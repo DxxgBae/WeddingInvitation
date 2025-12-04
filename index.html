@@ -291,47 +291,47 @@
             <p class="large">오시는길</p>
             <p class="marginBtm">빌라드지디 청담</p>
             <div id="map" data-aos="fade-up"></div>
-            <div class="mapBtns marginBtm" data-aos="fade-up">
+            <div class="mapBtns" data-aos="fade-up">
                 <a class="btn" href="tel:025427513">󰀄 연락하기</a>
                 <a class="btn" href="https://naver.me/FN7XxqiL" target="_blank">
                     󰀧 지도보기
                 </a>
             </div>
-            <p class="way marginBtm borderBtm" data-aos="fade-up">
-                <img
-                    src="src/subway.svg"
-                    alt=""
-                    style="width: 1rem; height: 1rem"
-                />
-                지하철 이용
-            </p>
-            <p class="small marginBtm" data-aos="fade-up">
-                청담역(7호선) 12번 출구 바로 앞
-            </p>
-            <p class="way marginBtm borderBtm" data-aos="fade-up">
-                <img
-                    src="src/bus.svg"
-                    alt=""
-                    style="width: 1rem; height: 1rem"
-                />
-                버스 이용
-            </p>
-            <p class="small marginBtm" data-aos="fade-up">
-                청담역, 경기고교 정류장 하차<br />
-                버스번호 301, 343, 401, 2415, 3414, 3426
-            </p>
-            <p class="way marginBtm borderBtm" data-aos="fade-up">
-                <img
-                    src="src/car.svg"
-                    alt=""
-                    style="width: 1rem; height: 1rem"
-                />
-                차량 이용
-            </p>
-            <p class="small" data-aos="fade-up">
-                서울특별시 강남구 학동로 519<br />
-                서울특별시 강남구 청담동 73-4
-            </p>
+            <div data-aos="fade-up">
+                <p class="way">
+                    <img
+                        src="src/subway.svg"
+                        alt=""
+                        style="width: 1rem; height: 1rem"
+                    />
+                    지하철 이용
+                </p>
+                <p>청담역(7호선) 12번 출구 바로 앞</p>
+                <p class="way">
+                    <img
+                        src="src/bus.svg"
+                        alt=""
+                        style="width: 1rem; height: 1rem"
+                    />
+                    버스 이용
+                </p>
+                <p>
+                    청담역, 경기고교 정류장 하차<br />
+                    버스번호 301, 343, 401, 2415, 3414, 3426
+                </p>
+                <p class="way">
+                    <img
+                        src="src/car.svg"
+                        alt=""
+                        style="width: 1rem; height: 1rem"
+                    />
+                    차량 이용
+                </p>
+                <p>
+                    서울특별시 강남구 학동로 519<br />
+                    서울특별시 강남구 청담동 73-4
+                </p>
+            </div>
         </div>
         <div class="container">
             <p class="xsmall gray2">NOTICE</p>
@@ -520,20 +520,32 @@
         <div class="container">
             <p class="xsmall gray2">GUESTBOOK</p>
             <p class="large">방명록</p>
-            <div class="writeBtn" onclick="clicked(this)" data-aos="fade-up">
-                작성하기 
-            </div>
+            <div class="writeBtn" onclick="clicked(this)">작성하기 </div>
             <form id="dataForm" class="writeContainer marginBtm">
                 <label for="name">이름</label>
-                <input type="text" id="name" name="name" required />
-                <br />
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    autocomplete="off"
+                    required
+                />
                 <label for="password">암호</label>
-                <input type="password" id="password" name="password" required />
-                <br />
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    autocomplete="off"
+                    required
+                />
                 <label for="content">내용</label>
-                <textarea id="content" name="content" required></textarea>
-                <br />
-                <button type="submit">확인</button>
+                <textarea
+                    id="content"
+                    name="content"
+                    autocomplete="off"
+                    required
+                ></textarea>
+                <button type="submit">전달하기</button>
                 <p id="message"></p>
             </form>
             <div class="guestbooks" data-aos="fade-up"></div>

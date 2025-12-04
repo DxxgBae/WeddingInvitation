@@ -1,3 +1,6 @@
+const SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbzNTAIyzpx_xkMlVdsTjjCs1xifaoM9_h6HJvDyagfzqh-9z4XFZE7SFOQ5MPqk1vo/exec";
+
 document.addEventListener("DOMContentLoaded", function () {
     AOS.init({
         duration: 2000,
@@ -85,8 +88,6 @@ document.addEventListener("DOMContentLoaded", function () {
     getGuestBook();
 
     // 방명록 쓰기
-    const SCRIPT_URL =
-        "https://script.google.com/macros/s/AKfycbxOMpo9Fci-CoP0REgItbBeLC1SxMXiu6csrks8mhPN7zZduxAdsBxvkGE4ZyIJukyh/exec";
     document
         .getElementById("dataForm")
         .addEventListener("submit", function (e) {
@@ -181,13 +182,17 @@ function getGuestBook() {
                 if (item.show) {
                     const container = document.createElement("div");
                     container.classList.add("guestbook");
-                    const id = document.createElement("div");
-                    id.classList.add("guestbookId");
-                    id.textContent = item.id;
-                    container.appendChild(id);
+                    const name = document.createElement("div");
+                    name.classList.add("guestbookId");
+                    name.textContent = item.name;
+                    container.appendChild(name);
                     const delBtn = document.createElement("div");
+                    delBtn.setAttribute("data-id", item.id);
                     delBtn.classList.add("guestbookDel");
                     delBtn.textContent = "󰀣";
+                    delBtn.addEventListener("click", function () {
+                        delGuestBook(this);
+                    });
                     container.appendChild(delBtn);
                     const contents = document.createElement("pre");
                     contents.classList.add("guestbookContents");
@@ -198,6 +203,31 @@ function getGuestBook() {
             });
         })
         .catch((error) => console.error("Error:", error));
+}
+
+function delGuestBook(element) {
+    const idToDelete = element.getAttribute("data-id");
+    const password = prompt("삭제를 위해 비밀번호를 입력하세요:");
+    if (password === null || password.trim() === "") return;
+    const url = new URL(SCRIPT_URL);
+    fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: `id=${idToDelete}&password=${encodeURIComponent(
+            password
+        )}&action=delete`,
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            alert(data.message);
+            if (data.result === "success") getGuestBook();
+        })
+        .catch((error) => {
+            console.error("삭제 요청 중 에러 발생:", error);
+            alert("삭제 요청에 실패했습니다. 네트워크를 확인하세요.");
+        });
 }
 
 function containsBadWordsJS(text) {
