@@ -9,6 +9,12 @@
             href="https://unpkg.com/aos@2.3.1/dist/aos.css"
             rel="stylesheet"
         />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Gravitas+One&display=swap"
+            rel="stylesheet"
+        />
         <link rel="stylesheet" href="css/main-20251204_9.css" />
         <script
             type="text/javascript"
@@ -18,29 +24,39 @@
     <body>
         <div class="intro">
             <img src="img/intro.jpg" alt="" />
-            <p class="introText textleft">
-                for<br />
-                ever
-            </p>
-            <p
-                class="introName textleft"
-                data-aos="fade-left"
-                data-aos-offset="-500"
-            >
-                DONGBAE
-            </p>
-            <p
-                class="introName textright"
-                data-aos="fade-right"
-                data-aos-offset="-500"
-                data-aos-delay="800"
-            >
-                JIMIN
-            </p>
+            <div class="introTexts">
+                <div
+                    class="introText"
+                    data-aos="fade-down"
+                    data-aos-offset="-100"
+                >
+                    forever
+                </div>
+                <div class="introNames">
+                    <div
+                        class="introName"
+                        data-aos="fade-left"
+                        data-aos-delay="800"
+                        data-aos-offset="-100"
+                    >
+                        DONGBAE
+                    </div>
+                    <div
+                        class="introName"
+                        data-aos="fade-right"
+                        data-aos-delay="1600"
+                        data-aos-offset="-100"
+                    >
+                        JIMIN
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="container" data-aos="fade">
-            <p class="large marginBtm">손동배❤️김지민</p>
-            <p class="large">2026년 2월 1일, 빌라드지디 청담</p>
+            <div class="large bold">손동배❤️김지민</div>
+            <div class="large marginBtm bold">결혼합니다.</div>
+            <div class="large">2026년 2월 1일 오전 11시 30분</div>
+            <div class="large">빌라드지디 청담</div>
         </div>
         <div class="container" data-aos="fade">
             <div class="ddayContainer marginBtm">
@@ -64,12 +80,12 @@
                     <div class="dsec large"></div>
                 </div>
             </div>
-            <p class="dtext"></p>
+            <div class="dtext"></div>
         </div>
         <div class="container">
-            <p class="xsmall gray2">INVITATION</p>
-            <p class="large marginBtm">소중한 분들을 초대합니다.</p>
-            <p class="invitation" data-aos="fade">
+            <div class="xsmall gray2">INVITATION</div>
+            <div class="large marginBtm bold">소중한 분들을 초대합니다.</div>
+            <div class="invitation" data-aos="fade">
                 이제는 눈빛만 봐도<br />
                 서로의 마음을 알 수 있는 두 사람.<br />
                 <br />
@@ -82,20 +98,20 @@
                 소중한 분들을 진심을 담아 초대합니다.<br />
                 <br />
                 <small>- 손동배, 김지민 올림 -</small>
-            </p>
+            </div>
         </div>
         <div class="container">
             <div class="info">
                 <div>
-                    <p class="xsmall gray2">GROOM</p>
-                    <p class="marginBtm">신랑</p>
+                    <div class="xsmall gray2">GROOM</div>
+                    <div class="marginBtm bold">신랑</div>
                     <div class="marginBtm" data-aos="fade">
                         <img src="img/groom.jpg" alt="" />
                     </div>
-                    <p class="marginBtm" data-aos="fade">
+                    <div class="marginBtm" data-aos="fade">
                         손병철·이용숙 <small>의 차남</small>
-                    </p>
-                    <p class="large marginBtm" data-aos="fade">손동배</p>
+                    </div>
+                    <div class="large marginBtm" data-aos="fade">손동배</div>
                     <div class="call" data-aos="fade">
                         <div class="callBtn" onclick="clicked(this)">
                             신랑측 연락하기 
@@ -142,15 +158,15 @@
                     </div>
                 </div>
                 <div>
-                    <p class="xsmall gray2">BRIDE</p>
-                    <p class="marginBtm">신부</p>
+                    <div class="xsmall gray2">BRIDE</div>
+                    <div class="marginBtm bold">신부</div>
                     <div class="marginBtm" data-aos="fade">
                         <img src="img/bride.jpg" alt="" />
                     </div>
-                    <p class="marginBtm" data-aos="fade">
+                    <div class="marginBtm" data-aos="fade">
                         김훈기·김효정 <small>의 장녀</small>
-                    </p>
-                    <p class="large marginBtm" data-aos="fade">김지민</p>
+                    </div>
+                    <div class="large marginBtm" data-aos="fade">김지민</div>
                     <div class="call" data-aos="fade">
                         <div class="callBtn" onclick="clicked(this)">
                             신부측 연락하기 
@@ -199,8 +215,8 @@
             </div>
         </div>
         <div class="container">
-            <p class="xsmall gray2">GALLERY</p>
-            <p class="large marginBtm">웨딩사진</p>
+            <div class="xsmall gray2">GALLERY</div>
+            <div class="large marginBtm bold">웨딩사진</div>
             <div class="gallery marginBtm" data-aos="fade">
                 <a data-fslightbox="gallery" href="img/sample.jpg">
                     <img src="img/sample_thumb.jpg" alt="" />
@@ -245,9 +261,9 @@
             </div>
         </div>
         <div class="container">
-            <p class="xsmall gray2">WEDDING DAY</p>
-            <p class="large">예식일</p>
-            <p class="marginBtm">2026년 2월 1일 오전 11시 30분</p>
+            <div class="xsmall gray2">WEDDING DAY</div>
+            <div class="large bold">예식일</div>
+            <div class="marginBtm">2026년 2월 1일 오전 11시 30분</div>
             <div class="calendar" data-aos="fade">
                 <div class="week borderTop">
                     <div class="day holiday">일</div>
@@ -304,9 +320,9 @@
             </div>
         </div>
         <div class="container">
-            <p class="xsmall gray2">LOCATION</p>
-            <p class="large">예식장</p>
-            <p class="marginBtm">빌라드지디 청담</p>
+            <div class="xsmall gray2">LOCATION</div>
+            <div class="large bold">예식장</div>
+            <div class="marginBtm">빌라드지디 청담</div>
             <div id="map" data-aos="fade"></div>
             <div class="mapBtns" data-aos="fade">
                 <a class="btn" href="tel:025427513">󰀄 연락하기</a>
@@ -315,44 +331,44 @@
                 </a>
             </div>
             <div data-aos="fade">
-                <p class="way">
+                <div class="way">
                     <img
                         src="src/subway.svg"
                         alt=""
                         style="width: 1rem; height: 1rem"
                     />
                     지하철 이용
-                </p>
-                <p>청담역(7호선) 12번 출구 바로 앞</p>
-                <p class="way">
+                </div>
+                <div>청담역(7호선) 12번 출구 바로 앞</div>
+                <div class="way">
                     <img
                         src="src/bus.svg"
                         alt=""
                         style="width: 1rem; height: 1rem"
                     />
                     버스 이용
-                </p>
-                <p>
+                </div>
+                <div>
                     청담역, 경기고교 정류장 하차<br />
                     버스번호 301, 343, 401, 2415, 3414, 3426
-                </p>
-                <p class="way">
+                </div>
+                <div class="way">
                     <img
                         src="src/car.svg"
                         alt=""
                         style="width: 1rem; height: 1rem"
                     />
                     차량 이용
-                </p>
-                <p>
+                </div>
+                <div>
                     서울특별시 강남구 학동로 519<br />
                     서울특별시 강남구 청담동 73-4
-                </p>
+                </div>
             </div>
         </div>
         <div class="container">
-            <p class="xsmall gray2">NOTICE</p>
-            <p class="large marginBtm">안내사항</p>
+            <div class="xsmall gray2">NOTICE</div>
+            <div class="large marginBtm bold">안내사항</div>
             <div class="notice marginBtm" data-aos="fade">
                 <input
                     class="notice1"
@@ -391,14 +407,14 @@
                 />
                 <label for="notice3">
                     <img
-                        src="src/parking.svg"
+                        src="src/divarking.svg"
                         alt=""
                         style="width: 0.75rem; height: 0.75rem"
                     />
                     주차안내
                 </label>
                 <div class="notice1text">
-                    <p>
+                    <div>
                         저희 결혼식에 귀한 걸음 해 주신 하객 여러분께 진심으로
                         감사드립니다.<br />
                         <br />
@@ -410,15 +426,15 @@
                         식사하실 수 있습니다.<br />
                         <br />
                         편안한 시간 되시기 바랍니다.
-                    </p>
+                    </div>
                 </div>
                 <div class="notice2text">화환 안내사항 준비중</div>
                 <div class="notice3text">주차 안내사항 준비중</div>
             </div>
         </div>
         <div class="container">
-            <p class="xsmall gray2">ACCOUNT</p>
-            <p class="large marginBtm">마음 전하실 곳</p>
+            <div class="xsmall gray2">ACCOUNT</div>
+            <div class="large marginBtm bold">마음 전하실 곳</div>
             <div class="account marginBtm" data-aos="fade">
                 <div class="accountBtn" onclick="clicked(this)">신랑측 </div>
                 <div class="accounts">
@@ -535,8 +551,8 @@
             </div>
         </div>
         <div class="container">
-            <p class="xsmall gray2">GUESTBOOK</p>
-            <p class="large">방명록</p>
+            <div class="xsmall gray2">GUESTBOOK</div>
+            <div class="large bold">방명록</div>
             <div class="writeBtn" onclick="clicked(this)">작성하기 </div>
             <form id="dataForm" class="writeContainer">
                 <label for="name">이름</label>
@@ -567,16 +583,16 @@
                 ></textarea>
                 <label for="content"></label>
                 <button type="submit" class="sendBtn">전달하기</button>
-                <p id="message"></p>
+                <div id="message"></div>
             </form>
             <div class="guestbooks" data-aos="fade"></div>
         </div>
         <div class="container">
-            <p class="xsmall gray2">SNAPSHOT</p>
-            <p class="large marginBtm">스냅사진</p>
-            <p class="marginBtm" data-aos="fade">
+            <div class="xsmall gray2">SNAPSHOT</div>
+            <div class="large marginBtm bold">스냅사진</div>
+            <div class="marginBtm" data-aos="fade">
                 결혼식의 행복한 순간을 사진에 담아 전달해주세요.
-            </p>
+            </div>
             <a
                 class="btn upload"
                 href="https://forms.gle/6cabVA9LZveF4xEUA"
@@ -593,12 +609,30 @@
         </div>
         <div class="ending">
             <img src="img/ending.jpg" alt="" />
-            <p class="endingText" data-aos="fade">
-                “예쁜 예감이 들었다.<br />
-                우리는 언제나 손을 잡고 있게 될 것이다.”<br />
+            <div class="endingTexts">
+                <div
+                    class="endingText"
+                    data-aos="fade-up"
+                    data-aos-offset="300"
+                >
+                    “예쁜 예감이 들었다.
+                </div>
+                <div
+                    class="endingText"
+                    data-aos="fade-up"
+                    data-aos-offset="400"
+                >
+                    우리는 언제나 손을 잡고 있게 될 것이다.”
+                </div>
                 <br />
-                <small>- 이이체 〈연인〉 中</small>
-            </p>
+                <div
+                    class="endingText small"
+                    data-aos="fade-up"
+                    data-aos-offset="500"
+                >
+                    - 이이체 〈연인〉 中
+                </div>
+            </div>
         </div>
         <div class="container">
             <span class="xsmall gray">Copyright for</span>

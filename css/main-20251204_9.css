@@ -10,16 +10,23 @@
     font-family: "Freesentation-7Bold";
     src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-7Bold.woff2")
         format("woff2");
-    font-weight: 900;
+    font-weight: 700;
     font-style: normal;
 }
 
 @font-face {
-    font-family: "Freesentation-9Black";
-    src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2")
+    font-family: "SchoolSafetyWing";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2511-1@1.0/HakgyoansimNalgaeR.woff2")
         format("woff2");
-    font-weight: 900;
-    font-style: normal;
+    font-weight: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ChosunIlboMyungjo';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff') format('woff');
+    font-weight: normal;
+    font-display: swap;
 }
 
 :root {
@@ -142,34 +149,44 @@ img {
     width: 100%;
     height: 100vh;
     height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .intro img {
+    position: absolute;
+    top: 0;
+    left: 0;
     object-position: top;
 }
 
+.introTexts {
+    padding-bottom: 2rem;
+}
+
 .introText {
-    position: absolute;
-    z-index: 1;
-    bottom: 4rem;
-    left: 0;
-    padding: 2rem;
-    width: 100%;
     color: var(--white);
-    font-family: "Freesentation-9Black", sans-serif;
     font-size: var(--font-scale);
-    line-height: 0.75;
+    font-family: "Gravitas One", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.introNames {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .introName {
-    position: absolute;
-    z-index: 1;
-    bottom: 0;
-    left: 0;
-    padding: 2rem;
-    width: 100%;
     color: var(--white);
-    font-family: "Freesentation-9Black", sans-serif;
+    font-family: "Gravitas One", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: small;
 }
 
 .textleft {
@@ -235,6 +252,10 @@ img {
 
 .calls td {
     padding: 0 0.25rem;
+}
+
+.calls td:first-child {
+    padding-right: 0.75rem;
 }
 
 .gallery {
@@ -517,15 +538,21 @@ input[type="radio"] {
     justify-content: space-between;
 }
 
+.guestbookId {
+    font-family: "SchoolSafetyWing", sans-serif;
+    border-bottom: 1px solid var(--gray);
+}
+
 .guestbookDel {
     cursor: pointer;
     font-size: small;
 }
 
 .guestbookContents {
-    margin-top: 0.5rem;
+    margin-top: 1rem;
     width: 100%;
     text-align: left;
+    font-family: "SchoolSafetyWing", sans-serif;
 }
 
 .upload {
@@ -541,15 +568,15 @@ input[type="radio"] {
     width: 100%;
 }
 
-.endingText {
+.endingTexts {
     position: absolute;
     z-index: 1;
     top: 4rem;
     left: 0;
     width: 100%;
-    color: var(--white);
 }
 
-.endingText small {
-    color: var(--white);
+.endingText {
+    color: white;
+    font-family: "ChosunIlboMyungjo", sans-serif;
 }

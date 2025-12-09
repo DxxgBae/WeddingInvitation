@@ -4,7 +4,7 @@ const SCRIPT_URL =
 document.addEventListener("DOMContentLoaded", function () {
     AOS.init({
         duration: 2000,
-        once: true,
+        once: false,
     });
 
     window.fslightbox_config = {
@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function setFontSize(parent) {
     const parentWidth = parent.clientWidth;
-    const fontSize = `${parentWidth * 0.4}px`;
+    const fontSize = `${parentWidth * 0.16}px`;
     parent.style.setProperty("--font-scale", fontSize);
 }
 
@@ -199,7 +199,7 @@ function getGuestBook() {
                     container.classList.add("guestbook");
                     const name = document.createElement("div");
                     name.classList.add("guestbookId");
-                    name.textContent = item.name;
+                    name.textContent = `${item.name}`;
                     container.appendChild(name);
                     const delBtn = document.createElement("div");
                     delBtn.setAttribute("data-id", item.id);
