@@ -12,6 +12,10 @@ document.addEventListener("DOMContentLoaded", function () {
         thumbs: false,
     };
 
+    const parent = document.body;
+    setFontSize(parent);
+    window.addEventListener("resize", setFontSize(parent));
+
     // 카운트다운
     const countDownDate = new Date("Feb 1, 2026 11:30:00").getTime();
     const ddayElement = document.querySelector(".dday");
@@ -36,8 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 (distance % (1000 * 60 * 60)) / (1000 * 60)
             );
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            if (ddayElement)
-                ddayElement.textContent = `D-${formatNumber(days)}`;
+            if (ddayElement) ddayElement.textContent = formatNumber(days);
             if (dhourElement) dhourElement.textContent = formatNumber(hours);
             if (dminElement) dminElement.textContent = formatNumber(minutes);
             if (dsecElement) dsecElement.textContent = formatNumber(seconds);
@@ -134,6 +137,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
         });
 });
+
+function setFontSize(parent) {
+    const parentWidth = parent.clientWidth;
+    const fontSize = `${parentWidth * 0.4}px`;
+    parent.style.setProperty("--font-scale", fontSize);
+}
 
 function showMore(element) {
     const gallery = document.querySelector(".gallery");
