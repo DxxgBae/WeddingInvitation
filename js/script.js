@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
     setFontSize(parent);
     window.addEventListener("resize", setFontSize(parent));
 
+    createSnowflakes();
+
     // 카운트다운
     const countDownDate = new Date("Feb 1, 2026 11:30:00").getTime();
     const ddayElement = document.querySelector(".dday");
@@ -138,6 +140,46 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 });
 
+function createSnowflakes() {
+    const container = document.querySelector(".snowContainer");
+    const styleEl = document.createElement("style");
+    let css = "";
+    for (let i = 0; i < 100; i++) {
+        const randomX = Math.random() * 100;
+        const randomOffset = Math.random() * 30 - 15;
+        const randomXEnd = randomX + randomOffset;
+        const randomXEndYoyo = randomX + randomOffset / 2;
+
+        const randomYoyoTime = Math.random();
+        const randomYoyoY = randomYoyoTime * 100;
+
+        const randomScale = Math.random();
+        const fallDuration = Math.random() * 20 + 10;
+        const fallDelay = Math.random() * -1000;
+        const opacity = Math.random();
+
+        const snowflake = document.createElement("div");
+        snowflake.classList.add("snow");
+        snowflake.style.opacity = opacity;
+        snowflake.style.transform = `translate(${randomX}vw, -8px) scale(${randomScale})`;
+        snowflake.style.animation = `fall-${i} ${fallDuration}s ${fallDelay}s linear infinite`;
+        container.appendChild(snowflake);
+
+        css += `
+            @keyframes fall-${i} {
+                ${randomYoyoTime * 100}% {
+                    transform: translate(${randomXEnd}vw, ${randomYoyoY}vh) scale(${randomScale});
+                }
+                to {
+                    transform: translate(${randomXEndYoyo}vw, 100vh) scale(${randomScale});
+                }
+            }
+        `;
+    }
+    styleEl.innerHTML = css;
+    document.head.appendChild(styleEl);
+}
+
 function setFontSize(parent) {
     const parentWidth = parent.clientWidth;
     const fontSize = `${parentWidth * 0.16}px`;
@@ -199,7 +241,7 @@ function getGuestBook() {
                     container.classList.add("guestbook");
                     const name = document.createElement("div");
                     name.classList.add("guestbookId");
-                    name.textContent = `${item.name}`;
+                    name.textContent = item.name;
                     container.appendChild(name);
                     const delBtn = document.createElement("div");
                     delBtn.setAttribute("data-id", item.id);
