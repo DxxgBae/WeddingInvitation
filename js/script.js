@@ -7,10 +7,22 @@ document.addEventListener("DOMContentLoaded", function () {
         once: false,
     });
 
+    // 갤러리
     window.fslightbox_config = {
         zoom_buttons: false,
         thumbs: false,
     };
+    const gallery = document.querySelector(".gallery");
+    for (let i = 0; i < 21; i++) {
+        const img = document.createElement("a");
+        img.href = `img/gallery_${i + 1}.jpg`;
+        img.setAttribute("data-fslightbox", "gallery");
+        const thumb = document.createElement("img");
+        thumb.src = `img/gallery_${i + 1}_thumb.jpg`;
+        thumb.alt = "";
+        img.appendChild(thumb);
+        gallery.appendChild(img);
+    }
 
     const parent = document.body;
     setFontSize(parent);
@@ -154,7 +166,7 @@ function createSnowflakes() {
         const randomYoyoY = randomYoyoTime * 100;
 
         const randomScale = Math.random();
-        const fallDuration = Math.random() * 20 + 10;
+        const fallDuration = Math.random() * 15 + 15;
         const fallDelay = Math.random() * -1000;
         const opacity = Math.random();
 

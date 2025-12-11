@@ -154,13 +154,16 @@ img {
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
+    overflow: hidden;
 }
 
 .intro img {
     position: absolute;
     top: 0;
     left: 0;
-    object-position: top;
+    width: 110%;
+    object-position: top left;
+    animation: moveLeft 4000ms forwards;
 }
 
 .introTexts {
@@ -599,4 +602,13 @@ input[type="radio"] {
     height: 8px;
     background: white;
     border-radius: 50%;
+}
+
+@keyframes moveLeft {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: -10%;
+    }
 }
