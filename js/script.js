@@ -2,6 +2,7 @@ const SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbwqH_LxD0DT4J8Mplc5RDyX_N_OgkvDPruY1Gn8u1f-Hf9Lu5Fh2gM2GIYgamiuYFaq/exec";
 
 document.addEventListener("DOMContentLoaded", function () {
+    // 페이드효과
     AOS.init({
         duration: 2000,
         once: false,
@@ -25,61 +26,74 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const parent = document.body;
+    function setFontSize() {
+        const parentWidth = parent.clientWidth;
+        const fontSize = `${parentWidth * 0.24}px`;
+        parent.style.setProperty("--font-scale", fontSize);
+    }
     setFontSize(parent);
     window.addEventListener("resize", setFontSize(parent));
 
+    // 눈효과
+    const createSnowflakes = () => {
+        const container = document.querySelector(".snowContainer");
+        const styleEl = document.createElement("style");
+        let css = "";
+        for (let i = 0; i < 100; i++) {
+            const randomX = Math.random() * 100;
+            const randomOffset = Math.random() * 30 - 15;
+            const randomXEnd = randomX + randomOffset;
+            const randomXEndYoyo = randomX + randomOffset / 2;
+
+            const randomYoyoTime = Math.random();
+            const randomYoyoY = randomYoyoTime * 100;
+
+            const randomScale = Math.random();
+            const fallDuration = Math.random() * 15 + 15;
+            const fallDelay = Math.random() * -1000;
+            const opacity = Math.random();
+
+            const snowflake = document.createElement("div");
+            snowflake.classList.add("snow");
+            snowflake.style.opacity = opacity;
+            snowflake.style.transform = `translate(${randomX}vw, -8px) scale(${randomScale})`;
+            snowflake.style.animation = `fall-${i} ${fallDuration}s ${fallDelay}s linear infinite`;
+            container.appendChild(snowflake);
+
+            css += `
+            @keyframes fall-${i} {
+                ${randomYoyoTime * 100}% {
+                    transform: translate(${randomXEnd}vw, ${randomYoyoY}vh) scale(${randomScale});
+                }
+                to {
+                    transform: translate(${randomXEndYoyo}vw, 100vh) scale(${randomScale});
+                }
+            }
+        `;
+        }
+        styleEl.innerHTML = css;
+        document.head.appendChild(styleEl);
+    };
     createSnowflakes();
 
     // 카운트다운
     const countDownDate = new Date("Feb 1, 2026 11:30:00").getTime();
     const ddayElement = document.querySelector(".dday");
-    const dhourElement = document.querySelector(".dhour");
-    const dminElement = document.querySelector(".dmin");
-    const dsecElement = document.querySelector(".dsec");
-    const dtextElement = document.querySelector(".dtext");
-    const formatNumber = (num) => {
-        return Math.abs(num) < 10
-            ? "0" + Math.abs(num)
-            : Math.abs(num).toString();
-    };
     const updateCountdown = () => {
         const now = new Date().getTime();
         const distance = countDownDate - now;
         if (distance > 0) {
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor(
-                (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-            );
-            const minutes = Math.floor(
-                (distance % (1000 * 60 * 60)) / (1000 * 60)
-            );
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            if (ddayElement) ddayElement.textContent = formatNumber(days);
-            if (dhourElement) dhourElement.textContent = formatNumber(hours);
-            if (dminElement) dminElement.textContent = formatNumber(minutes);
-            if (dsecElement) dsecElement.textContent = formatNumber(seconds);
-            if (dtextElement)
-                dtextElement.textContent = `동배&지민의 결혼식이 ${days}일 남았습니다.`;
+            if (ddayElement)
+                ddayElement.textContent = `동배♥지민의 결혼식이 ${days}일 남았습니다.`;
         } else {
             const elapsed = Math.abs(distance);
             const days = Math.floor(elapsed / (1000 * 60 * 60 * 24));
-            const hours = Math.floor(
-                (elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-            );
-            const minutes = Math.floor(
-                (elapsed % (1000 * 60 * 60)) / (1000 * 60)
-            );
-            const seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
             if (ddayElement)
-                ddayElement.textContent = `D+${formatNumber(days)}`;
-            if (dhourElement) dhourElement.textContent = formatNumber(hours);
-            if (dminElement) dminElement.textContent = formatNumber(minutes);
-            if (dsecElement) dsecElement.textContent = formatNumber(seconds);
-            if (dtextElement)
-                dtextElement.textContent = `동배와 지민이가 둘이 하나된지 ${days}일`;
+                ddayElement.textContent = `동배♥지민의 결혼식이 ${days}일 지났습니다.`;
         }
     };
-    const x = setInterval(updateCountdown, 1000);
+    setInterval(updateCountdown, 1000);
     updateCountdown();
 
     // 지도
@@ -104,6 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
         map.trigger("resize");
     }, 1000);
 
+    // 방명록 가져오기
     getGuestBook();
 
     // 방명록 쓰기
@@ -151,52 +166,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
         });
 });
-
-function createSnowflakes() {
-    const container = document.querySelector(".snowContainer");
-    const styleEl = document.createElement("style");
-    let css = "";
-    for (let i = 0; i < 100; i++) {
-        const randomX = Math.random() * 100;
-        const randomOffset = Math.random() * 30 - 15;
-        const randomXEnd = randomX + randomOffset;
-        const randomXEndYoyo = randomX + randomOffset / 2;
-
-        const randomYoyoTime = Math.random();
-        const randomYoyoY = randomYoyoTime * 100;
-
-        const randomScale = Math.random();
-        const fallDuration = Math.random() * 15 + 15;
-        const fallDelay = Math.random() * -1000;
-        const opacity = Math.random();
-
-        const snowflake = document.createElement("div");
-        snowflake.classList.add("snow");
-        snowflake.style.opacity = opacity;
-        snowflake.style.transform = `translate(${randomX}vw, -8px) scale(${randomScale})`;
-        snowflake.style.animation = `fall-${i} ${fallDuration}s ${fallDelay}s linear infinite`;
-        container.appendChild(snowflake);
-
-        css += `
-            @keyframes fall-${i} {
-                ${randomYoyoTime * 100}% {
-                    transform: translate(${randomXEnd}vw, ${randomYoyoY}vh) scale(${randomScale});
-                }
-                to {
-                    transform: translate(${randomXEndYoyo}vw, 100vh) scale(${randomScale});
-                }
-            }
-        `;
-    }
-    styleEl.innerHTML = css;
-    document.head.appendChild(styleEl);
-}
-
-function setFontSize(parent) {
-    const parentWidth = parent.clientWidth;
-    const fontSize = `${parentWidth * 0.16}px`;
-    parent.style.setProperty("--font-scale", fontSize);
-}
 
 function showMore(element) {
     const gallery = document.querySelector(".gallery");
@@ -253,7 +222,7 @@ function getGuestBook() {
                     container.classList.add("guestbook");
                     const name = document.createElement("div");
                     name.classList.add("guestbookId");
-                    name.textContent = item.name;
+                    name.textContent = `from ${item.name}`;
                     container.appendChild(name);
                     const delBtn = document.createElement("div");
                     delBtn.setAttribute("data-id", item.id);
