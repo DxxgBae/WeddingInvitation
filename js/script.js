@@ -5,8 +5,40 @@ document.addEventListener("DOMContentLoaded", function () {
     // 페이드효과
     AOS.init({
         duration: 2000,
+        offset: 0,
+        delay: 200,
         once: false,
     });
+    aosRefresh();
+
+    // 인트로 폰트크기
+    const parent = document.body;
+    function setFontSize() {
+        const parentWidth = parent.clientWidth;
+        const fontSize = `${parentWidth * 0.25}px`;
+        parent.style.setProperty("--font-scale", fontSize);
+    }
+    setFontSize(parent);
+    window.addEventListener("resize", setFontSize(parent));
+
+    // 카운트다운
+    const countDownDate = new Date("Feb 1, 2026 11:30:00").getTime();
+    const ddayElement = document.querySelector(".dday");
+    const updateCountdown = () => {
+        const now = new Date().getTime();
+        const distance = countDownDate - now;
+        if (distance > 0) {
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            if (ddayElement)
+                ddayElement.textContent = `동배♥지민의 결혼식이 ${days}일 남았습니다.`;
+        } else {
+            const elapsed = Math.abs(distance);
+            const days = Math.floor(elapsed / (1000 * 60 * 60 * 24));
+            if (ddayElement)
+                ddayElement.textContent = `동배♥지민의 결혼식이 ${days}일 지났습니다.`;
+        }
+    };
+    updateCountdown();
 
     // 갤러리
     window.fslightbox_config = {
@@ -16,23 +48,29 @@ document.addEventListener("DOMContentLoaded", function () {
     const gallery = document.querySelector(".gallery");
     for (let i = 0; i < 21; i++) {
         const img = document.createElement("a");
+        img.classList.add("galleryItem");
         img.href = `img/gallery_${i + 1}.jpg`;
         img.setAttribute("data-fslightbox", "gallery");
+        img.setAttribute("data-aos", "fade");
+        img.setAttribute("data-aos-delay", (i % 3) * 400 + 200);
         const thumb = document.createElement("img");
+        thumb.classList.add("thumb");
         thumb.src = `img/gallery_${i + 1}_thumb.jpg`;
         thumb.alt = "";
         img.appendChild(thumb);
         gallery.appendChild(img);
     }
-
-    const parent = document.body;
-    function setFontSize() {
-        const parentWidth = parent.clientWidth;
-        const fontSize = `${parentWidth * 0.24}px`;
-        parent.style.setProperty("--font-scale", fontSize);
-    }
-    setFontSize(parent);
-    window.addEventListener("resize", setFontSize(parent));
+    if (typeof refreshFsLightbox === "function") refreshFsLightbox();
+    const galleryBtn = document.querySelector(".galleryBtn");
+    galleryBtn.addEventListener("click", () => {
+        const isClicked = galleryBtn.classList.toggle("clicked");
+        if (isClicked) galleryBtn.textContent = "사진 접기 ";
+        else galleryBtn.textContent = "사진 더보기 ";
+        if (typeof refreshFsLightbox === "function") refreshFsLightbox();
+        setTimeout(() => {
+            aosRefresh();
+        }, 450);
+    });
 
     // 눈효과
     const createSnowflakes = () => {
@@ -76,26 +114,6 @@ document.addEventListener("DOMContentLoaded", function () {
     };
     createSnowflakes();
 
-    // 카운트다운
-    const countDownDate = new Date("Feb 1, 2026 11:30:00").getTime();
-    const ddayElement = document.querySelector(".dday");
-    const updateCountdown = () => {
-        const now = new Date().getTime();
-        const distance = countDownDate - now;
-        if (distance > 0) {
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            if (ddayElement)
-                ddayElement.textContent = `동배♥지민의 결혼식이 ${days}일 남았습니다.`;
-        } else {
-            const elapsed = Math.abs(distance);
-            const days = Math.floor(elapsed / (1000 * 60 * 60 * 24));
-            if (ddayElement)
-                ddayElement.textContent = `동배♥지민의 결혼식이 ${days}일 지났습니다.`;
-        }
-    };
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-
     // 지도
     var mapDiv = document.getElementById("map");
     var center = new naver.maps.LatLng(37.52014, 127.05547);
@@ -114,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
         position: center,
         map: map,
     });
-    setTimeout(function () {
+    setTimeout(() => {
         map.trigger("resize");
     }, 1000);
 
@@ -167,18 +185,25 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 });
 
-function showMore(element) {
-    const gallery = document.querySelector(".gallery");
-    const isClicked = gallery.classList.toggle("expanded");
-    if (isClicked) element.textContent = "접기 ";
-    else element.textContent = "더보기 ";
-    if (typeof refreshFsLightbox === "function") refreshFsLightbox();
+function aosRefresh() {
+    if (typeof AOS !== "undefined" && typeof AOS.refresh === "function")
+        AOS.refresh();
 }
 
 function clicked(element) {
     const isClicked = element.classList.toggle("clicked");
     if (isClicked) element.textContent = element.textContent.replace("", "");
     else element.textContent = element.textContent.replace("", "");
+    const dropdownBox = element.nextElementSibling;
+    if (dropdownBox && isClicked) {
+        const targetHeight = dropdownBox.dataset.height;
+        if (targetHeight) dropdownBox.style.height = targetHeight;
+    } else if (dropdownBox && !isClicked) {
+        dropdownBox.style.height = null;
+    }
+    setTimeout(() => {
+        aosRefresh();
+    }, 450);
 }
 
 function callPhone(element) {
