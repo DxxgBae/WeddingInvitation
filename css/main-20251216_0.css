@@ -33,6 +33,7 @@
 }
 
 :root {
+    --background: whitesmoke;
     --black: #111;
     --white: #fafafa;
     --gray1: #ddd;
@@ -60,7 +61,7 @@ html {
     scroll-behavior: smooth;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    background-color: whitesmoke;
+    background-color: var(--background);
 }
 
 body {
@@ -89,7 +90,13 @@ body {
     font-family: "ChosunIlboMyungjo", sans-serif;
 }
 
+.explain {
+    color: var(--gray2);
+    text-wrap: balance;
+}
+
 .dropdown {
+    margin-top: 1rem;
     border: 1px solid var(--gray1);
     border-radius: 8px;
     background-color: white;
@@ -115,6 +122,55 @@ body {
 .dropdownBtn.clicked + .dropdownBox {
     opacity: 1;
     border-width: 1px;
+}
+
+.radio {
+    border: 1px solid var(--gray1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.radioBtns {
+    display: flex;
+    flex-direction: row;
+}
+
+.radioBtn {
+    cursor: pointer;
+    padding: 0.5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    border-bottom: 1px solid var(--gray1);
+}
+
+.radioBtn.clicked {
+    background-color: white;
+    border-color: transparent;
+}
+
+.radioBtn:not(:first-child) {
+    border-left: 1px solid var(--gray1);
+}
+
+.radioBtn img {
+    width: 1rem;
+}
+
+.radioContents {
+    padding: 2rem;
+    background-color: white;
+}
+
+.radioContent {
+    display: none;
+}
+
+.radioContent.clicked {
+    display: flex;
 }
 
 .intro {
@@ -152,8 +208,6 @@ body {
     flex-shrink: 0;
     color: var(--white);
     font-family: "Gravitas One", serif;
-    font-weight: 400;
-    font-style: normal;
 }
 
 .introText {
@@ -166,9 +220,40 @@ body {
     font-size: small;
 }
 
-.info {
+.infoDetail {
+    margin-bottom: 1rem;
+    color: var(--gray2);
+    font-family: "ChosunIlboMyungjo", sans-serif;
+}
+
+.infoTexts {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     font-size: larger;
-    line-height: 2;
+    color: var(--color1);
+    font-family: "Freesentation-7Bold", sans-serif;
+}
+
+.infoText {
+    position: relative;
+    width: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.infoDday {
+    z-index: 1;
+    color: var(--white);
+    font-family: "Freesentation-7Bold", sans-serif;
+}
+
+.infoIcon {
+    position: absolute;
+    width: 100%;
+    transform: translateY(2px);
 }
 
 .heros {
@@ -247,11 +332,18 @@ body {
     object-fit: cover;
 }
 
-.calendarTitle {
-    margin-bottom: 1rem;
+.weddingday {
     color: var(--color1);
     text-align: left;
     font-size: x-large;
+    font-family: "ChosunIlboMyungjo", sans-serif;
+}
+
+.weddingdayDetail {
+    margin-bottom: 1rem;
+    color: var(--gray2);
+    text-align: left;
+    font-size: small;
     font-family: "ChosunIlboMyungjo", sans-serif;
 }
 
@@ -343,6 +435,17 @@ body {
     border-top: 1px solid var(--gray1);
 }
 
+.wayTitle {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0 4px;
+    text-align: left;
+}
+
 .way {
     margin-bottom: 1rem;
     display: flex;
@@ -362,191 +465,62 @@ body {
     width: calc(100% - 1rem - 4px);
 }
 
-/*****************************************************************/
-
-input[type="radio"] {
-    display: none;
-}
-
-.notice {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    border: 1px solid var(--gray1);
-    border-radius: 8px 8px 0 0;
-    overflow: hidden;
-}
-
-.notice label {
-    cursor: pointer;
-    padding: 0.75rem 0;
-    width: calc(100% / 3);
-    border-bottom: 1px solid var(--gray1);
-    background-color: whitesmoke;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-}
-
-.notice label ~ label {
-    border-left: 1px solid var(--gray1);
-}
-
-.notice input:checked + label {
-    border-bottom: 1px solid transparent;
-    background-color: white;
-}
-
-.notice1text,
-.notice2text,
-.notice3text {
-    display: none;
-    padding: 2rem;
-    width: 100%;
-    background-color: white;
-}
-
-.notice1:checked ~ .notice1text,
-.notice2:checked ~ .notice2text,
-.notice3:checked ~ .notice3text {
+.noticeContainer {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: flex-start;
-}
-
-.noticeIcon {
-    margin-right: 4px;
-    width: 1rem;
-}
-
-.noticetext {
-    width: calc(100% - 1rem - 4px);
+    gap: 1rem 4px;
     text-align: left;
 }
 
-.account {
-    border: 1px solid var(--gray1);
-    border-radius: 8px;
-    overflow: hidden;
+.noticeMarker {
+    width: 1rem;
 }
 
-.accountBtn {
-    cursor: pointer;
-    padding: 0.75rem 0;
-    width: 100%;
-    font-size: small;
-    background-color: white;
+.noticeText {
+    width: calc(100% - 1rem - 4px);
 }
 
 .accounts {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow: hidden;
-    background-color: white;
-    transition: height 400ms, opacity 400ms, border-width 400ms,
-        border-color 400ms;
-    border-top: 0px solid transparent;
-    height: 0;
-    opacity: 0;
+    border-spacing: 0 0.5rem;
 }
 
-.accountBtn.clicked + .accounts {
-    height: 8rem;
-    opacity: 1;
-    border-width: 1px;
-    border-color: var(--gray1);
-}
-
-.accounts table {
-    margin: 0 auto;
-    width: fit-content;
-    border-collapse: separate;
-    border-spacing: 0 1rem;
-}
-
-.accounts tr {
+.account {
     cursor: pointer;
 }
 
-.accounts td {
+.account td {
     padding: 0 0.5rem;
-}
-
-.writeBtn {
-    cursor: pointer;
-    padding: 0.75rem 0;
     font-size: small;
 }
 
-.writeContainer {
-    width: calc(100% + 1rem);
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 0.5rem 0;
-    overflow: hidden;
-    transition: padding 400ms, height 400ms, opacity 400ms;
-    height: 0;
-    opacity: 0;
+.account td:first-child {
+    border-right: 1px solid var(--gray1);
 }
 
-.writeBtn.clicked + .writeContainer {
-    padding-top: 0.5rem;
-    height: 14rem;
-    opacity: 1;
+.account td:last-child {
+    border-left: 1px solid var(--gray1);
 }
 
-.writeContainer label {
-    width: 3rem;
-    font-size: small;
-}
-
-.writeContainer input,
-.writeContainer textarea,
-.writeContainer button {
-    padding: 0.5rem;
-    width: calc(100% - 4rem);
-    height: 2rem;
-    border: 1px solid var(--gray1);
-    border-radius: 8px;
-    background-color: white;
-    font-size: medium;
-}
-
-.writeContainer input::placeholder,
-.writeContainer textarea::placeholder {
-    color: var(--gray2);
-}
-
-.writeContainer textarea {
-    height: 6rem;
-    resize: none;
-}
-
-.writeContainer .sendBtn {
-    cursor: pointer;
-    font-size: small;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.account img {
+    width: 1rem;
+    display: block;
 }
 
 .guestbooks {
     z-index: 1;
-    max-height: 300px;
+    margin-top: 1rem;
+    max-height: 480px;
     overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 .guestbook {
     padding: 1rem;
-    margin-bottom: 0.5rem;
     border: 1px solid var(--gray1);
     border-radius: 8px;
     background-color: white;
@@ -575,12 +549,95 @@ input[type="radio"] {
     font-family: "SchoolSafetyWing", sans-serif;
 }
 
+.writedown {
+    margin-top: 0.5rem;
+}
+
+.writedownBtn {
+    cursor: pointer;
+    padding: 0.5rem;
+    font-size: small;
+}
+
+.writedownBox {
+    width: calc(100% + 1rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: height 400ms, opacity 400ms;
+    height: 0;
+    opacity: 0;
+}
+
+.writedownBtn.clicked + .writedownBox {
+    opacity: 1;
+}
+
+.writeContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem 0;
+}
+
+.writeContainer label {
+    width: 2rem;
+    font-size: small;
+    text-align: left;
+}
+
+.writeContainer input,
+.writeContainer textarea {
+    padding: 0.25rem 0.5rem;
+    width: calc(100% - 2rem - 1rem);
+    height: 2rem;
+    border: 1px solid var(--gray1);
+    border-radius: 8px;
+    background-color: white;
+    font-size: medium;
+}
+
+.writeContainer input::placeholder,
+.writeContainer textarea::placeholder {
+    color: var(--gray2);
+}
+
+.writeContainer textarea {
+    height: 6rem;
+    resize: none;
+}
+
+.sendBtn {
+    cursor: pointer;
+    width: calc(100% - 2rem - 1rem);
+    height: 2rem;
+    border: 1px solid var(--gray1);
+    border-radius: 8px;
+    background-color: white;
+    font-size: small;
+}
+
 .upload {
+    margin-top: 1rem;
+    padding: 0.5rem;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     gap: 4px;
+    border: 1px solid var(--gray1);
+    border-radius: 8px;
+    background-color: white;
+    text-decoration: none;
+    font-size: small;
+}
+
+.upload img {
+    width: 1rem;
+    display: block;
 }
 
 .ending {
@@ -620,6 +677,15 @@ input[type="radio"] {
     height: 8px;
     background: white;
     border-radius: 50%;
+}
+
+.footer {
+    font-size: small;
+    color: var(--gray2);
+}
+
+.copyright {
+    color: var(--black);
 }
 
 @keyframes moveLeft {

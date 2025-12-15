@@ -23,19 +23,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 카운트다운
     const countDownDate = new Date("Feb 1, 2026 11:30:00").getTime();
-    const ddayElement = document.querySelector(".dday");
+    const ddayElement = document.querySelector(".infoDday");
     const updateCountdown = () => {
         const now = new Date().getTime();
         const distance = countDownDate - now;
         if (distance > 0) {
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            if (ddayElement)
-                ddayElement.textContent = `동배♥지민의 결혼식이 ${days}일 남았습니다.`;
+            if (ddayElement) ddayElement.textContent = days;
         } else {
             const elapsed = Math.abs(distance);
             const days = Math.floor(elapsed / (1000 * 60 * 60 * 24));
-            if (ddayElement)
-                ddayElement.textContent = `동배♥지민의 결혼식이 ${days}일 지났습니다.`;
+            if (ddayElement) ddayElement.textContent = days;
         }
     };
     updateCountdown();
@@ -141,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 방명록 쓰기
     document
-        .getElementById("dataForm")
+        .getElementById("writeForm")
         .addEventListener("submit", function (e) {
             e.preventDefault();
             const form = e.target;
@@ -201,6 +199,25 @@ function clicked(element) {
     } else if (dropdownBox && !isClicked) {
         dropdownBox.style.height = null;
     }
+    setTimeout(() => {
+        aosRefresh();
+    }, 450);
+}
+
+function radio(element) {
+    const index = element.getAttribute("data-radio");
+    const btns = document.querySelectorAll(".radioBtn");
+    btns.forEach((item) => {
+        if (item.getAttribute("data-radio") === index)
+            item.classList.add("clicked");
+        else item.classList.remove("clicked");
+    });
+    const contents = document.querySelectorAll(".radioContent");
+    contents.forEach((item) => {
+        if (item.getAttribute("data-radio") === index)
+            item.classList.add("clicked");
+        else item.classList.remove("clicked");
+    });
     setTimeout(() => {
         aosRefresh();
     }, 450);
