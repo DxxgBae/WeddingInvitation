@@ -92,7 +92,6 @@ body {
 }
 
 .explain {
-    color: var(--gray2);
     text-wrap: balance;
 }
 
