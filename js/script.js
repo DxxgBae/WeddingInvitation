@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
         thumbs: false,
     };
     const gallery = document.querySelector(".gallery");
-    for (let i = 0; i < 21; i++) {
+    for (let i = 0; i < 37; i++) {
         const img = document.createElement("a");
         img.classList.add("galleryItem");
         img.href = `img/gallery_${i + 1}.jpg`;
