@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const snowflake = document.createElement("div");
             snowflake.classList.add("snow");
             snowflake.style.opacity = opacity;
-            snowflake.style.transform = `translate(${randomX}vw, -8px) scale(${randomScale})`;
+            snowflake.style.transform = `translate(${randomX}vw, -6px) scale(${randomScale})`;
             snowflake.style.animation = `fall-${i} ${fallDuration}s ${fallDelay}s linear infinite`;
             container.appendChild(snowflake);
 

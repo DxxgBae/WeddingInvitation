@@ -50,6 +50,7 @@
     color: var(--black);
     font-family: "Freesentation-4Regular", sans-serif;
     line-height: 1.5;
+    text-decoration: none;
 }
 
 *::-webkit-scrollbar {
@@ -171,6 +172,25 @@ body {
 
 .radioContent.clicked {
     display: flex;
+}
+
+.snowContainer {
+    pointer-events: none;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.snow {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
 }
 
 .intro {
@@ -426,7 +446,6 @@ body {
     border: 1px solid var(--gray1);
     border-radius: 8px;
     font-size: small;
-    text-decoration: none;
     background-color: white;
 }
 
@@ -631,7 +650,6 @@ body {
     border: 1px solid var(--gray1);
     border-radius: 8px;
     background-color: white;
-    text-decoration: none;
     font-size: small;
 }
 
@@ -658,25 +676,6 @@ body {
 .endingText {
     color: white;
     font-family: "ChosunIlboMyungjo", sans-serif;
-}
-
-.snowContainer {
-    pointer-events: none;
-    z-index: 1;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-.snow {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    background: white;
-    border-radius: 50%;
 }
 
 .footer {
