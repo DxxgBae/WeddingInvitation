@@ -2,15 +2,6 @@ const SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbwqH_LxD0DT4J8Mplc5RDyX_N_OgkvDPruY1Gn8u1f-Hf9Lu5Fh2gM2GIYgamiuYFaq/exec";
 
 document.addEventListener("DOMContentLoaded", function () {
-    // 페이드효과
-    AOS.init({
-        duration: 2000,
-        offset: 0,
-        delay: 200,
-        once: false,
-    });
-    aosRefresh();
-
     // 인트로 폰트크기
     const parent = document.body;
     function setFontSize() {
@@ -44,16 +35,16 @@ document.addEventListener("DOMContentLoaded", function () {
         thumbs: false,
     };
     const gallery = document.querySelector(".gallery");
-    for (let i = 0; i < 37; i++) {
+    for (let i = 0; i < 36; i++) {
         const img = document.createElement("a");
         img.classList.add("galleryItem");
-        img.href = `img/gallery_${i + 1}.jpg`;
+        img.href = `img/${i + 1}.jpg`;
         img.setAttribute("data-fslightbox", "gallery");
         img.setAttribute("data-aos", "fade");
         img.setAttribute("data-aos-delay", (i % 3) * 400 + 200);
         const thumb = document.createElement("img");
         thumb.classList.add("thumb");
-        thumb.src = `img/gallery_${i + 1}_thumb.jpg`;
+        thumb.src = `img/${i + 1}_thumb.jpg`;
         thumb.alt = "";
         img.appendChild(thumb);
         gallery.appendChild(img);
@@ -181,6 +172,15 @@ document.addEventListener("DOMContentLoaded", function () {
                     sendBtn.textContent = "전달하기";
                 });
         });
+
+    // 페이드효과
+    AOS.init({
+        duration: 2000,
+        offset: 0,
+        delay: 200,
+        once: false,
+    });
+    aosRefresh();
 });
 
 function aosRefresh() {
@@ -218,9 +218,7 @@ function radio(element) {
             item.classList.add("clicked");
         else item.classList.remove("clicked");
     });
-    setTimeout(() => {
-        aosRefresh();
-    }, 450);
+    aosRefresh();
 }
 
 function callPhone(element) {
@@ -282,6 +280,7 @@ function getGuestBook() {
                 }
             });
             guestbooks.appendChild(fragment);
+            aosRefresh();
         })
         .catch((error) => console.error("Error:", error));
 }
