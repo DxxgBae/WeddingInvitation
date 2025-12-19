@@ -432,7 +432,7 @@ body {
     bottom: 0;
     width: fit-content;
     color: var(--color1);
-    font-size: small;
+    font-size: x-small;
     text-wrap: nowrap;
 }
 
@@ -710,20 +710,6 @@ body {
 
 .copyright {
     color: var(--color1);
-}
-
-@media screen and (max-width: 400px) {
-    html {
-        font-size: 15px;
-    }
-
-    body {
-        background-color: var(--color1);
-    }
-
-    .day {
-        aspect-ratio: 3 / 4;
-    }
 }
 
 @keyframes moveLeft {
