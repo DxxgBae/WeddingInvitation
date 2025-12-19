@@ -298,6 +298,12 @@ body {
     background-color: var(--color1);
 }
 
+.heroTitle img {
+    margin-bottom: 2rem;
+    padding: 0 0.5rem;
+    height: 12px;
+}
+
 .heroImg {
     margin-bottom: 1rem;
     width: 100%;
