@@ -712,30 +712,25 @@ body {
     color: var(--color1);
 }
 
+@media screen and (max-width: 400px) {
+    html {
+        font-size: 15px;
+    }
+
+    .day {
+        aspect-ratio: 3 / 4;
+    }
+
+    .event {
+        font-size: x-small;
+    }
+}
+
 @keyframes moveLeft {
     0% {
         left: 0;
     }
     100% {
         left: -10%;
-    }
-}
-
-@media screen and (max-width: 400px) {
-    html {
-        font-size: 15px;
-    }
-
-    body {
-        background-color: var(--color1);
-    }
-
-    .day {
-        aspect-ratio: 3 / 4;
-        background-color: yellow;
-    }
-
-    .event {
-        font-size: x-small;
     }
 }
