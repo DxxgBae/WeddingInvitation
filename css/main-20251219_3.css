@@ -717,12 +717,12 @@ body {
         font-size: 15px;
     }
 
-    .day {
-        aspect-ratio: 3 / 4;
+    body {
+        background-color: var(--color1);
     }
 
-    .event {
-        font-size: x-small;
+    .day {
+        aspect-ratio: 3 / 4;
     }
 }
 
