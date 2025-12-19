@@ -662,7 +662,6 @@ body {
     border-radius: 8px;
     background-color: white;
     font-size: small;
-    color: var(--color1);
 }
 
 .upload {
@@ -727,8 +726,13 @@ body {
         font-size: 15px;
     }
 
+    body {
+        background-color: var(--color1);
+    }
+
     .day {
         aspect-ratio: 3 / 4;
+        background-color: yellow;
     }
 
     .event {
