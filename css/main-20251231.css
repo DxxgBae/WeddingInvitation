@@ -38,7 +38,8 @@
     --gray1: #ddd;
     --gray2: #aaa;
     --color1: #cd5c5c;
-    --color2: #ffc0cb;
+    --color2: #f3a7b0;
+    --color3: #ffc0cb;
 }
 
 * {
@@ -399,8 +400,8 @@ body {
 }
 
 .calendar {
-    border-top: 1px solid var(--color2);
-    border-bottom: 1px solid var(--color2);
+    border-top: 1px solid var(--color3);
+    border-bottom: 1px solid var(--color3);
 }
 
 .week {
