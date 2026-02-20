@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // 카운트다운
     const countDownDate = new Date("Feb 1, 2026 11:30:00").getTime();
     const ddayElement = document.querySelector(".infoDday");
+    const infoTextElement = document.querySelector(".infoText");
     const updateCountdown = () => {
         const now = new Date().getTime();
         const distance = countDownDate - now;
@@ -25,6 +26,10 @@ document.addEventListener("DOMContentLoaded", function () {
             const elapsed = Math.abs(distance);
             const days = Math.floor(elapsed / (1000 * 60 * 60 * 24));
             if (ddayElement) ddayElement.textContent = days;
+            infoTextElement.textContent = infoTextElement.textContent.replace(
+                "남았습니다",
+                "지났습니다",
+            );
         }
     };
     updateCountdown();
@@ -142,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 containsBadWordsJS(submittedContent)
             ) {
                 alert(
-                    "⚠️ 입력하신 이름 또는 내용에 부적절한 단어가 포함되어 있습니다."
+                    "⚠️ 입력하신 이름 또는 내용에 부적절한 단어가 포함되어 있습니다.",
                 );
                 return;
             }
@@ -252,8 +257,8 @@ function getGuestBook() {
             const data = json.table.rows
                 .map((r) =>
                     Object.fromEntries(
-                        keys.map((key, i) => [key, r.c[i]?.v ?? ""])
-                    )
+                        keys.map((key, i) => [key, r.c[i]?.v ?? ""]),
+                    ),
                 )
                 .reverse();
             data.forEach((item) => {
@@ -296,7 +301,7 @@ function delGuestBook(element) {
             "Content-Type": "application/x-www-form-urlencoded",
         },
         body: `id=${idToDelete}&password=${encodeURIComponent(
-            password
+            password,
         )}&action=delete`,
     })
         .then((response) => response.json())

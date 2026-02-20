@@ -259,6 +259,11 @@ body {
 }
 
 .infoText {
+    color: var(--color1);
+    font-family: "Freesentation-7Bold", sans-serif;
+}
+
+.infoNumber {
     position: relative;
     width: 3rem;
     display: flex;
